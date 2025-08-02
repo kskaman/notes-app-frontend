@@ -6,7 +6,6 @@ import * as yup from "yup";
 import TextInput from "../../../ui/TextInput";
 import Divider from "../../../ui/Divider";
 import AuthFormWrapper from "./AuthFormWrapper";
-import { useState } from "react";
 
 interface FormValues {
   email: string;
@@ -22,8 +21,8 @@ const schema = yup
   .required();
 
 const ForgotPassword = () => {
-  const [message, setMessage] = useState<string | null>(null);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  // const [message, setMessage] = useState<string | null>(null);
+  // const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const {
     control,
@@ -34,13 +33,9 @@ const ForgotPassword = () => {
     defaultValues: { email: "" },
   });
 
-  const onSubmit = (data: FormValues) => {
-    console.log("Forgot Password", data);
-  };
-
   return (
     <div className="w-full flex flex-col items-center gap-4">
-      {message && (
+      {/* {message && (
         <p className="mt-4 text-preset-5 text-green-600 text-center">
           {message}
         </p>
@@ -49,13 +44,19 @@ const ForgotPassword = () => {
         <p className="mt-4 text-preset-5 text-red-600 text-center">
           {errorMessage}
         </p>
-      )}
+      )} */}
+
+      <p className="mt-4 text-preset-5 text-red-600 text-center">
+        {`"Forgot Password" functionality is disabled for frontend demo. 
+          Please go to Login page and use one of the test accounts.`}
+      </p>
 
       <AuthFormWrapper
         heading="Forgotten your password?"
         subHeading="Enter your email below, and we'll send you a link to reset it."
         buttonText={isSubmitting ? "Sending..." : "Send Reset Link"}
-        onFormSubmit={handleSubmit(onSubmit)}
+        onFormSubmit={handleSubmit(() => {})}
+        submitDisabled={true}
       >
         {/* Email */}
         <Controller
@@ -69,6 +70,7 @@ const ForgotPassword = () => {
               label="Email Address"
               placeholder="Enter your email"
               error={error}
+              disabled={true}
             />
           )}
         />

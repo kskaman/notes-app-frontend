@@ -2,15 +2,11 @@ import { createContext } from "react";
 import type { User } from "../types/user";
 
 interface AuthContextProps {
-  user: User | null;
-  authLoading: boolean;
-  setUser: React.Dispatch<React.SetStateAction<User | null>>;
+  user: User | null | undefined;
 }
 
 const AuthContext = createContext<AuthContextProps>({
   user: null,
-  authLoading: true,
-  setUser: () => {},
 });
 
 export default AuthContext;

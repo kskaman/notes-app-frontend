@@ -26,7 +26,7 @@ export function useLogin() {
       return loginRequest(email, password);
     },
     onSuccess: (user) => {
-      localStorage.setItem("authUser", JSON.stringify(user));
+      localStorage.setItem("authUser", JSON.stringify(user.id));
       qc.setQueryData(USER_KEY, user);
     },
     onError: () => {

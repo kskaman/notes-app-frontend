@@ -1,7 +1,7 @@
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 import clsx from "clsx";
 
-import InfoIcon from "../assets/Icons/InfoIcon";
+import InfoIcon from "../assets/icons/InfoIcon.tsx";
 
 export interface TextInputProps {
   type?: "text" | "password" | "email" | "number";

@@ -17,5 +17,6 @@ export async function loginRequest(
   if (!user) {
     throw new Error("Invalid email or password");
   }
+
   return user;
 }

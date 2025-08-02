@@ -5,7 +5,7 @@ import Login from "./pages/auth/components/Login";
 import Signup from "./pages/auth/components/Signup";
 import ForgotPassword from "./pages/auth/components/ForgotPassword";
 import Dashboard from "./pages/notes/Dashboard";
-import AppLayout from "./pages/notes/AppLayout";
+import Layout from "./pages/notes/Layout";
 
 export const router = createBrowserRouter([
   /* /auth/login */
@@ -22,14 +22,14 @@ export const router = createBrowserRouter([
       { index: true, element: <Navigate to="/auth/login" replace /> },
       { path: "login", element: <Login /> },
       { path: "signup", element: <Signup /> },
-      { path: "forget-password", element: <ForgotPassword /> },
+      { path: "forgot-password", element: <ForgotPassword /> },
     ],
   },
 
   /* /notes/* */
   {
     path: "notes",
-    element: <AppLayout />,
+    element: <Layout />,
     children: [
       { index: true, element: <Navigate to="/notes/dashboard" replace /> },
       { path: "dashboard", element: <Dashboard /> },

@@ -9,8 +9,11 @@ import Divider from "../../../ui/Divider";
 import AuthFormWrapper from "./AuthFormWrapper";
 import PasswordTextInput from "../../../ui/PasswordTextInput";
 
-import googleIcon from "../../assets/images/icon-google.svg";
+import googleIcon from "../../../assets/images/icon-google.svg";
+
 import { useState } from "react";
+import { useLogin } from "../../../queries/authQueries";
+import { router } from "../../../router";
 
 interface FormValues {
   email: string;
@@ -29,7 +32,8 @@ const schema = yup
 
 const Login = () => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [showVerifyLink, setShowVerifyLink] = useState(false);
+
+  const loginMutation = useLogin();
 
   const {
     control,
@@ -37,11 +41,22 @@ const Login = () => {
     formState: { isSubmitting },
   } = useForm<FormValues>({
     resolver: yupResolver(schema),
-    defaultValues: { email: "", password: "" },
+    defaultValues: {
+      email: "testUser@example.com",
+      password: "securePassword123",
+    },
   });
 
   const onSubmit = (data: FormValues) => {
-    console.log("Login", data);
+    loginMutation.mutate(
+      { email: data.email, password: data.password },
+      {
+        onSuccess: () => {
+          setErrorMessage(null);
+          router.navigate("/notes/dashboard", { replace: true });
+        },
+      }
+    );
   };
 
   return (
@@ -52,7 +67,7 @@ const Login = () => {
             {errorMessage}
           </p>
         )}
-        {showVerifyLink && (
+        {/* {showVerifyLink && (
           <p className="text-preset-5 text-(--text-primary) text-center">
             <Link
               to="/auth/verify-email"
@@ -62,7 +77,7 @@ const Login = () => {
             </Link>
             to resend verification
           </p>
-        )}
+        )} */}
       </div>
 
       <AuthFormWrapper
@@ -122,7 +137,7 @@ const Login = () => {
       <Button
         variant="outlined"
         width="100%"
-        onClick={() => console.log("Google")}
+        onClick={() => {}}
         icon={<img src={googleIcon} alt={"google icon"} width={"20px"} />}
       >
         Google

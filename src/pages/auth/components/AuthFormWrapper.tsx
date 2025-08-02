@@ -6,6 +6,7 @@ interface Props {
   subHeading?: string;
   children: ReactNode;
   buttonText: string;
+  submitDisabled?: boolean;
   onFormSubmit: FormEventHandler<HTMLFormElement>;
 }
 const AuthFormWrapper = ({
@@ -14,6 +15,7 @@ const AuthFormWrapper = ({
   children,
   buttonText,
   onFormSubmit,
+  submitDisabled = false,
 }: Props) => {
   return (
     <div className="w-full flex flex-col items-center gap-4">
@@ -34,7 +36,7 @@ const AuthFormWrapper = ({
         {children}
 
         {/* Login button */}
-        <Button variant="primary" width="100%">
+        <Button variant="primary" width="100%" disabled={submitDisabled}>
           {buttonText}
         </Button>
       </form>

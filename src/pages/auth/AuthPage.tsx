@@ -1,5 +1,5 @@
 import { Outlet } from "react-router";
-import logoSrc from "../assets/logo.svg";
+import logoSrc from "../../assets/logo.svg";
 
 const AuthPage = () => {
   return (

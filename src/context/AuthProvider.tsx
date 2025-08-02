@@ -1,25 +1,16 @@
-import { useEffect, useState, type ReactNode } from "react";
-import type { User } from "../types/user";
+import { type ReactNode } from "react";
 import AuthContext from "./AuthContext";
+import { useMe } from "../queries/authQueries";
 
 interface AuthProviderProps {
   children: ReactNode;
 }
 
 const AuthProvider = ({ children }: AuthProviderProps) => {
-  const [user, setUser] = useState<User | null>(null);
-  const [authLoading, setAuthLoading] = useState<boolean>(true);
-
-  useEffect(() => {
-    me()
-      .then((user) => setUser(user))
-      .finally(() => setAuthLoading(false));
-  }, []);
+  const { data: user } = useMe();
 
   return (
-    <AuthContext.Provider value={{ user, authLoading, setUser }}>
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={{ user }}>{children}</AuthContext.Provider>
   );
 };
 

@@ -9,8 +9,7 @@ import Divider from "../../../ui/Divider";
 import AuthFormWrapper from "./AuthFormWrapper";
 import PasswordTextInput from "../../../ui/PasswordTextInput";
 
-import googleIcon from "../../assets/images/icon-google.svg";
-import { useState } from "react";
+import googleIcon from "../../../assets/images/icon-google.svg";
 
 interface FormValues {
   email: string;
@@ -34,8 +33,8 @@ const schema = yup
   .required();
 
 const Signup = () => {
-  const [successMessage, setSuccessMessage] = useState<string | null>(null);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  // const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  // const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const {
     control,
@@ -46,14 +45,10 @@ const Signup = () => {
     defaultValues: { email: "", password: "" },
   });
 
-  const onSubmit = (data: FormValues) => {
-    console.log("Sign up", data);
-  };
-
   return (
     <div className="w-full flex flex-col items-center gap-4">
       <div className="h-8">
-        {(successMessage || errorMessage) && (
+        {/* {(successMessage || errorMessage) && (
           <div className="w-full max-w-[396px] mx-auto">
             {successMessage && (
               <p className="text-preset-5 text-(--success-color) text-center">
@@ -66,14 +61,19 @@ const Signup = () => {
               </p>
             )}
           </div>
-        )}
+        )} */}
+        <p className="text-preset-5 text-(--warning-color) text-center">
+          {`"Sign Up" functionality is disabled for frontend demo. 
+          Please go to Login page and use one of the test accounts.`}
+        </p>
       </div>
 
       <AuthFormWrapper
         heading="Create Your Account"
         subHeading="Sign up to start organizing your notes and boost productivity"
         buttonText={isSubmitting ? "Submitting..." : "Submit"}
-        onFormSubmit={handleSubmit(onSubmit)}
+        onFormSubmit={handleSubmit(() => {})}
+        submitDisabled={true}
       >
         {/* Email */}
         <Controller
@@ -87,6 +87,7 @@ const Signup = () => {
               label="Email Address"
               placeholder="Enter your email"
               error={error}
+              disabled={true}
             />
           )}
         />
@@ -101,6 +102,7 @@ const Signup = () => {
               onChange={field.onChange}
               label="Password"
               error={error}
+              disabled={true}
             />
           )}
         />
@@ -116,7 +118,7 @@ const Signup = () => {
       <Button
         variant="outlined"
         width="100%"
-        onClick={() => console.log("Google")}
+        onClick={() => {}}
         icon={<img src={googleIcon} alt={"google icon"} width={"20px"} />}
       >
         Google

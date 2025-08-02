@@ -1,6 +1,9 @@
-import { ReactNode, CSSProperties } from "react";
+import type { ReactNode, CSSProperties } from "react";
 import clsx from "clsx";
-import { ButtonVariant, buttonVariants } from "../constants/buttonVariants";
+import {
+  type ButtonVariant,
+  buttonVariants,
+} from "../constants/buttonVariants";
 
 interface ButtonProps {
   variant?: ButtonVariant;
