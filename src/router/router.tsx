@@ -8,6 +8,7 @@ import NotesLayout from "../pages/notes/NotesLayout";
 import { authLoader } from "./loaders/authLoader";
 import AuthProvider from "../context/AuthProvider";
 import NotFound from "../pages/notFound/NotFound";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 export const router = createBrowserRouter([
   {
@@ -22,7 +23,11 @@ export const router = createBrowserRouter([
         id: "authProtected",
         path: "/",
         loader: authLoader,
-        element: <NotesLayout />,
+        element: (
+          <QueryClientProvider client={new QueryClient()}>
+            <NotesLayout />
+          </QueryClientProvider>
+        ),
         children: [
           { index: true, element: <Navigate to="/dashboard" replace /> },
           { path: "dashboard", element: <Dashboard /> },
