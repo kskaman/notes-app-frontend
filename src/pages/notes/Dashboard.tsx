@@ -1,15 +1,12 @@
-import { router } from "../../router";
+import { useAuth } from "../../context/AuthContext";
 import Button from "../../ui/Button";
 
-const handleLogout = () => {
-  localStorage.removeItem("authUser");
-  router.navigate("/auth/login", { replace: true });
-};
-
 const HomePageLayout = () => {
+  const { logout } = useAuth();
+
   return (
     <div>
-      <Button variant="primary" onClick={handleLogout}>
+      <Button variant="primary" onClick={logout}>
         Log Out
       </Button>
     </div>

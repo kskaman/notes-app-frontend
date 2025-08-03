@@ -12,8 +12,8 @@ import PasswordTextInput from "../../../ui/PasswordTextInput";
 import googleIcon from "../../../assets/images/icon-google.svg";
 
 import { useState } from "react";
-import { useLogin } from "../../../queries/authQueries";
-import { router } from "../../../router";
+import { useAuth } from "../../../context/AuthContext";
+import { loginRequest } from "../../../api/auth";
 
 interface FormValues {
   email: string;
@@ -33,7 +33,7 @@ const schema = yup
 const Login = () => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  const loginMutation = useLogin();
+  const { login } = useAuth();
 
   const {
     control,
@@ -47,16 +47,18 @@ const Login = () => {
     },
   });
 
-  const onSubmit = (data: FormValues) => {
-    loginMutation.mutate(
-      { email: data.email, password: data.password },
-      {
-        onSuccess: () => {
-          setErrorMessage(null);
-          router.navigate("/notes/dashboard", { replace: true });
-        },
+  const onSubmit = async (data: FormValues) => {
+    try {
+      const result = await loginRequest(data.email, data.password);
+      if (!result || (result && result.token == null)) {
+        setErrorMessage("Invalid email or password.");
+        return;
       }
-    );
+      console.log("Login successful:", result);
+      login({ token: result.token! });
+    } catch {
+      setErrorMessage("Invalid credentials.");
+    }
   };
 
   return (

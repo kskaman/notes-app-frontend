@@ -1,16 +1,33 @@
-import { type ReactNode } from "react";
-import AuthContext from "./AuthContext";
-import { useMe } from "../queries/authQueries";
+import { useState, type ReactNode } from "react";
+import { AuthContext } from "./AuthContext";
+import { useNavigate } from "react-router";
 
 interface AuthProviderProps {
   children: ReactNode;
 }
 
 const AuthProvider = ({ children }: AuthProviderProps) => {
-  const { data: user } = useMe();
+  const [accessToken, setAccessToken] = useState<string | null>(null);
+  const navigate = useNavigate();
+
+  const login = ({ token }: { token: string }) => {
+    console.log("Login token:", token);
+    localStorage.setItem("accessToken", token);
+    setAccessToken(token);
+    navigate("/dashboard", { replace: true });
+  };
+
+  const logout = () => {
+    localStorage.removeItem("accessToken");
+    setAccessToken(null);
+
+    navigate("/auth/login", { replace: true });
+  };
 
   return (
-    <AuthContext.Provider value={{ user }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ accessToken, login, logout }}>
+      {children}
+    </AuthContext.Provider>
   );
 };
 
