@@ -86,7 +86,7 @@ const Login = () => {
         </div>
 
         <AuthFormWrapper
-          heading="Welcome to Note"
+          heading="Welcome"
           subHeading="Please log in to continue"
           buttonText={isSubmitting ? "Submitting..." : "Submit"}
           onFormSubmit={handleSubmit(onSubmit)}
