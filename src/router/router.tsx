@@ -29,8 +29,8 @@ export const router = createBrowserRouter([
           </QueryClientProvider>
         ),
         children: [
-          { index: true, element: <Navigate to="/dashboard" replace /> },
-          { path: "dashboard", element: <Dashboard /> },
+          { index: true, element: <Navigate to="/" replace /> },
+          { path: "/", element: <Dashboard /> },
         ],
       },
       /* /auth/* */
