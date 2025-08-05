@@ -21,10 +21,11 @@ body {
   --subheading-text-1: #525866;
   --body-text-1: #555555;
 
-  --nav-item-text-color: "#2b303b";
-  --nav-item-text-hover-color: "#0e121b";
-  --nav-item-icon-color: "#2b303b";
-  --nav-item-icon-hover-color: "#335cff";
+  --nav-item-text-color: #2b303b;
+  --nav-item-text-active-color: #0e121b;
+  --nav-item-icon-color: #2b303b;
+  --nav-item-icon-active-color: #335cff;
+  --nav-item-bg-active: #f3f5f8;
 
   /* Primary Button */
   --btn-primary-bg: #335cff;
@@ -78,7 +79,7 @@ body {
   /* warning text color */
   --warning-color: #fb3748;
 
-  /* divider color */
+  /* Divider color */
   --divider: #e0e4e4;
 }
 
@@ -96,9 +97,10 @@ body {
   --body-text-1: #cccccc;
 
   --nav-item-text-color: "#2b303b";
-  --nav-item-text-hover-color: "#0e121b";
+  --nav-item-text-active-color: "#0e121b";
   --nav-item-icon-color: "#2b303b";
-  --nav-item-icon-hover-color: "#335cff";
+  --nav-item-icon-active-color: "#335cff";
+  --nav-item-bg-active: #f3f5f8;
 
   /* Primary Button */
   --btn-primary-bg: #335cff;

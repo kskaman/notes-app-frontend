@@ -1,10 +1,10 @@
-interface HomeIconProps {
+interface TrashIconProps {
   color?: string;
   width?: number;
   height?: number;
 }
 
-const HomeIcon = ({ color, width = 16, height = 16 }: HomeIconProps) => (
+const TrashIcon = ({ color, width = 16, height = 16 }: TrashIconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={width}
@@ -22,4 +22,4 @@ const HomeIcon = ({ color, width = 16, height = 16 }: HomeIconProps) => (
   </svg>
 );
 
-export default HomeIcon;
+export default TrashIcon;

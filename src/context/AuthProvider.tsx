@@ -14,7 +14,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     console.log("Login token:", token);
     localStorage.setItem("accessToken", token);
     setAccessToken(token);
-    navigate("/dashboard", { replace: true });
+    navigate("/", { replace: true });
   };
 
   const logout = () => {

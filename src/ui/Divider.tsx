@@ -1,16 +1,15 @@
-/**
- * A full‑width horizontal divider using background color.
- * Uses CSS variable --divider for its color.
- */
-const Divider = () => (
+const Divider = ({
+  orientation = "horizontal",
+}: {
+  orientation?: "horizontal" | "vertical";
+}) => (
   <hr
     role="separator"
-    className="
-      w-full 
-      h-[1px] 
+    className={`
       border-none 
       bg-(--divider)
-    "
+      ${orientation === "horizontal" ? "w-full h-[1px]" : "h-full w-[1px]"}
+    `}
   />
 );
 

@@ -4,7 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 import TextInput from "../../../ui/TextInput";
-import Divider from "../../../ui/Divider";
+import HDivider from "../../../ui/Divider";
 import AuthFormWrapper from "./AuthFormWrapper";
 
 interface FormValues {
@@ -77,7 +77,7 @@ const ForgotPassword = () => {
       </AuthFormWrapper>
 
       {/* Divider */}
-      <Divider />
+      <HDivider />
 
       {/* Sign up link */}
       <p className="text-preset-5 text-(--subheading-text-1) text-center">

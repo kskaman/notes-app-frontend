@@ -1,34 +1,34 @@
-import homeIcon from "../assets/images/icon-home.svg";
-import tagIcon from "../assets/images/icon-tag.svg";
-import archivedIcon from "../assets/images/icon-archive.svg";
-import trashIcon from "../assets/images/icon-delete.svg";
-import settingsIcon from "../assets/images/icon-delete.svg";
+import homeIcon from "../assets/icons/HomeIcon";
+import tagIcon from "../assets/icons/CollectionsIcon";
+import archivedIcon from "../assets/icons/ArchivedIcon";
+import trashIcon from "../assets/icons/TrashIcon";
+import settingsIcon from "../assets/icons/SettingsIcon";
 
 export const NAV_LINKS = [
   {
     name: "Home",
-    to: "/",
-    icon: homeIcon,
+    to: "/home",
+    Icon: homeIcon,
   },
   {
     name: "Collections",
-    to: "/",
-    icon: tagIcon,
+    to: "/collections",
+    Icon: tagIcon,
   },
   {
     name: "Archived",
-    to: "/",
-    icon: archivedIcon,
+    to: "/archived",
+    Icon: archivedIcon,
   },
   {
     name: "Trash",
-    to: "/",
-    icon: trashIcon,
+    to: "/trash",
+    Icon: trashIcon,
   },
 ];
 
 export const SETTINGS_LINK = {
   name: "Settings",
-  to: "/",
-  icon: settingsIcon,
+  to: "/settings",
+  Icon: settingsIcon,
 };

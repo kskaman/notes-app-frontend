@@ -7,7 +7,7 @@ import {
 
 interface ButtonProps {
   variant?: ButtonVariant;
-  children: string;
+  children?: string | ReactNode;
   icon?: ReactNode;
   /** only used for text‑only or icon‑only variants */
   color?: string;
