@@ -94,56 +94,54 @@ const Sidebar = ({ expanded, setExpanded }: SidebarProps) => {
           </NavLink>
         ))}
 
-        <div className="mt-auto space-y-1">
-          {/* settings * logout */}
-          <NavLink
-            to={SETTINGS_LINK.to}
-            className={({ isActive }) =>
-              clsx(baseNavClasses, isActive ? activeText : inactiveText)
-            }
-            key={SETTINGS_LINK.name}
-          >
-            {({ isActive }) => (
-              <>
-                <div className="flex items-center gap-2">
-                  <SETTINGS_LINK.Icon
-                    height={24}
-                    width={24}
-                    color={`${
-                      isActive
-                        ? "var(--nav-item-icon-active-color)"
-                        : "var(--nav-item-text-color)"
-                    }`}
-                  />
-                  {expanded && (
-                    <span className="text-preset-4 ">{SETTINGS_LINK.name}</span>
-                  )}
-                </div>
-
-                {expanded && isActive && (
-                  <div>
-                    <img
-                      src={leftArrowIcon}
-                      alt="right arrow"
-                      className="w-4 rotate-180"
-                    />
-                  </div>
+        {/* settings * logout */}
+        <NavLink
+          to={SETTINGS_LINK.to}
+          className={({ isActive }) =>
+            clsx(baseNavClasses, isActive ? activeText : inactiveText)
+          }
+          key={SETTINGS_LINK.name}
+        >
+          {({ isActive }) => (
+            <>
+              <div className="flex items-center gap-2">
+                <SETTINGS_LINK.Icon
+                  height={24}
+                  width={24}
+                  color={`${
+                    isActive
+                      ? "var(--nav-item-icon-active-color)"
+                      : "var(--nav-item-text-color)"
+                  }`}
+                />
+                {expanded && (
+                  <span className="text-preset-4 ">{SETTINGS_LINK.name}</span>
                 )}
-              </>
-            )}
-          </NavLink>
+              </div>
 
-          <div
-            className="flex items-center gap-2 
+              {expanded && isActive && (
+                <div>
+                  <img
+                    src={leftArrowIcon}
+                    alt="right arrow"
+                    className="w-4 rotate-180"
+                  />
+                </div>
+              )}
+            </>
+          )}
+        </NavLink>
+
+        <div
+          className="flex items-center gap-2 
                py-[10px] px-3 cursor-pointer
               rounded-[8px] w-full 
               text-(--nav-item-text-color)"
-            onClick={logout}
-          >
-            <img src={logoutIcon} alt="logout" className="w-6 rotate-180" />
+          onClick={logout}
+        >
+          <img src={logoutIcon} alt="logout" className="w-6 rotate-180" />
 
-            {expanded && <span className="text-preset-4">Logout</span>}
-          </div>
+          {expanded && <span className="text-preset-4">Logout</span>}
         </div>
       </nav>
     </div>

@@ -81,6 +81,9 @@ body {
 
   /* Divider color */
   --divider: #e0e4e4;
+
+  /* color for logo bar for mobile and tablet screens */
+  --logo-bar-background: #f3f5f8;
 }
 
 .dark {
@@ -143,6 +146,9 @@ body {
   /* color for button shadow when active */
   --btn-inner-shadow-color: #232530;
   --btn-outer-shadow-color: #4b5160;
+
+  /* color for logo bar for mobile and tablet screens */
+  --logo-bar-background: #f3f5f8;
 }
 
 @layer components {

@@ -7,12 +7,13 @@ import NotesLayout from "../pages/notes/layout";
 import { authLoader } from "./loaders/authLoader";
 import AuthProvider from "../context/AuthProvider";
 import NotFound from "../pages/notFound/NotFound";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import HomePage from "../pages/notes/home/page";
-import CollectionsPage from "../pages/notes/collections/page";
 import ArchivedPage from "../pages/notes/archived/page";
-import TrashPage from "../pages/notes/trash/page";
 import SettingsPage from "../pages/notes/settings/page";
+import AllNotesPage from "../pages/notes/all/page";
+import Loader from "../ui/Loader";
+import { QueryClientProvider } from "@tanstack/react-query";
+import queryClient from "../lib/queryClient";
+import SearchPage from "../pages/notes/search/page";
 
 export const router = createBrowserRouter([
   {
@@ -21,6 +22,7 @@ export const router = createBrowserRouter([
         <Outlet /> {/* children get context + useNavigate works */}
       </AuthProvider>
     ),
+    hydrateFallbackElement: <Loader />, // shows while checking auth status
     /* /notes/* */
     children: [
       {
@@ -28,17 +30,32 @@ export const router = createBrowserRouter([
         path: "/",
         loader: authLoader,
         element: (
-          <QueryClientProvider client={new QueryClient()}>
+          <QueryClientProvider client={queryClient}>
             <NotesLayout />
           </QueryClientProvider>
         ),
         children: [
           { index: true, element: <Navigate to="/home" replace /> },
-          { path: "/home", element: <HomePage /> },
-          { path: "/collections", element: <CollectionsPage /> },
-          { path: "/archived", element: <ArchivedPage /> },
-          { path: "/trash", element: <TrashPage /> },
-          { path: "/settings", element: <SettingsPage /> },
+          {
+            path: "/home",
+            element: <AllNotesPage />,
+            handle: { header: "All Notes" },
+          },
+          {
+            path: "/archived",
+            element: <ArchivedPage />,
+            handle: { header: "Archived Notes" },
+          },
+          {
+            path: "/search",
+            element: <SearchPage />,
+            handle: { header: "Search" },
+          },
+          {
+            path: "/settings",
+            element: <SettingsPage />,
+            handle: { header: "Settings" },
+          },
         ],
       },
       /* /auth/* */

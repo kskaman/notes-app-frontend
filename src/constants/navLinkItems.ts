@@ -1,8 +1,7 @@
 import homeIcon from "../assets/icons/HomeIcon";
-import tagIcon from "../assets/icons/CollectionsIcon";
 import archivedIcon from "../assets/icons/ArchivedIcon";
-import trashIcon from "../assets/icons/TrashIcon";
 import settingsIcon from "../assets/icons/SettingsIcon";
+import searchIcon from "../assets/icons/SearchIcon";
 
 export const NAV_LINKS = [
   {
@@ -11,19 +10,14 @@ export const NAV_LINKS = [
     Icon: homeIcon,
   },
   {
-    name: "Collections",
-    to: "/collections",
-    Icon: tagIcon,
-  },
-  {
     name: "Archived",
     to: "/archived",
     Icon: archivedIcon,
   },
   {
-    name: "Trash",
-    to: "/trash",
-    Icon: trashIcon,
+    name: "Search",
+    to: "/search",
+    Icon: searchIcon,
   },
 ];
 
