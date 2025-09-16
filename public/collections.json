@@ -1,0 +1,45 @@
+[
+  {
+    "id": "89a5dc7f-b300-41ec-8b68-7399ee0c76d7",
+    "userId": "76aaa072-b8c4-45ce-beb0-cb828285bc2d",
+    "name": "Development",
+    "noteCount": 4,
+    "noteIds": [
+      "d3c9e16c-6881-4a11-82eb-09ce3584ccc9",
+      "fa0647ab-aa54-415c-95bc-f28fd693d6cb",
+      "2c7b2818-762c-4a50-bffa-726f6b06e009",
+      "cec75d5c-35f0-433b-ba4d-ad4273208fd5"
+    ]
+  },
+  {
+    "id": "08f66191-937f-49a9-8857-6e7139032452",
+    "userId": "76aaa072-b8c4-45ce-beb0-cb828285bc2d",
+    "name": "Personal",
+    "noteCount": 3,
+    "noteIds": [
+      "6febdda9-e67a-48d9-baa8-e42abb3252d8",
+      "e08bb387-a300-4f87-bb3e-7d101b1b3ce1",
+      "c83ba051-6037-4a25-8e6d-61e86d62337b"
+    ]
+  },
+  {
+    "id": "3667c6b6-457f-4106-97f8-ab1d3e0ccafd",
+    "userId": "76aaa072-b8c4-45ce-beb0-cb828285bc2d",
+    "name": "Cooking & Recipes",
+    "noteCount": 2,
+    "noteIds": [
+      "db50cf3f-91d9-4c4f-9b61-72a2103d0556",
+      "c704c529-6eff-4cac-8d1b-bd8ef94257da"
+    ]
+  },
+  {
+    "id": "764219b7-0953-4249-9cae-5d0dd0ab1075",
+    "userId": "76aaa072-b8c4-45ce-beb0-cb828285bc2d",
+    "name": "Fitness & Health",
+    "noteCount": 2,
+    "noteIds": [
+      "e5da041b-aa2d-40fb-b8c7-5a43c6b25dbf",
+      "4eaf55a8-00de-479e-acb3-37a1a42245c2"
+    ]
+  }
+]

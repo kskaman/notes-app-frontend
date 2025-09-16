@@ -9,7 +9,7 @@ import AuthProvider from "../context/AuthProvider";
 import NotFound from "../pages/notFound/NotFound";
 import ArchivedPage from "../pages/notes/archived/page";
 import SettingsPage from "../pages/notes/settings/page";
-import AllNotesPage from "../pages/notes/all/page";
+import AllNotesPage from "../pages/notes/home/page";
 import Loader from "../ui/Loader";
 import { QueryClientProvider } from "@tanstack/react-query";
 import queryClient from "../lib/queryClient";

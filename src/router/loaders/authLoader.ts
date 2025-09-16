@@ -14,7 +14,7 @@ export async function authLoader() {
   }
 
   const users = await fetchUsers();
-  const user = users.find((u) => Number(u.id) === userId);
+  const user = users.find((u) => u.id === userId);
 
   if (!user) {
     localStorage.removeItem("accessToken");

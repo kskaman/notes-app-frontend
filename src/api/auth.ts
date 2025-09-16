@@ -27,6 +27,6 @@ export async function loginRequest(
     return null;
   }
 
-  const token = createToken(Number(user.id));
+  const token = createToken(user.id);
   return { token };
 }

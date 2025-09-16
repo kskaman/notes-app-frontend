@@ -84,6 +84,12 @@ body {
 
   /* color for logo bar for mobile and tablet screens */
   --logo-bar-background: #f3f5f8;
+
+  /* modal colors */
+  --modal-overlay: ;
+  --modal-bg: #ffffff;
+  --modal-icon-bg: #f3f5f8;
+  --modal-icon-color: #0e121b;
 }
 
 .dark {

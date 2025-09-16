@@ -4,7 +4,7 @@ interface InfoIconProps {
   height?: number;
 }
 
-const InfoIcon = ({ color, width = 16, height = 16 }: InfoIconProps) => (
+const HomeIcon = ({ color, width = 16, height = 16 }: InfoIconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={width}
@@ -33,4 +33,4 @@ const InfoIcon = ({ color, width = 16, height = 16 }: InfoIconProps) => (
   </svg>
 );
 
-export default InfoIcon;
+export default HomeIcon;

@@ -4,7 +4,7 @@ interface TrashIconProps {
   height?: number;
 }
 
-const TrashIcon = ({ color, width = 16, height = 16 }: TrashIconProps) => (
+const SearchIcon = ({ color, width = 16, height = 16 }: TrashIconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={width}
@@ -27,4 +27,4 @@ const TrashIcon = ({ color, width = 16, height = 16 }: TrashIconProps) => (
   </svg>
 );
 
-export default TrashIcon;
+export default SearchIcon;

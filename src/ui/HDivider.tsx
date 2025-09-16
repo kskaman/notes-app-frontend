@@ -3,7 +3,7 @@ const HDivider = () => (
     role="separator"
     className="
       w-full 
-      h-[1.5px] 
+      h-[1px] 
       border-none 
       bg-(--divider)
     "

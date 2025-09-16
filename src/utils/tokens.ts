@@ -1,4 +1,4 @@
-export function createToken(userId: number) {
+export function createToken(userId: string) {
   const payload = {
     sub: userId,
     iat: Date.now(),
@@ -7,7 +7,7 @@ export function createToken(userId: number) {
   return btoa(JSON.stringify(payload));
 }
 
-export function parseToken(token: string): number | null {
+export function parseToken(token: string): string | null {
   try {
     const { sub } = JSON.parse(atob(token));
     return sub;
