@@ -12,6 +12,7 @@ body {
   --modal-bg: #ffffff;
   --form-bg: #f7f7f7;
   --auth-page-bg: #f3f5f8;
+  --info-text-bg-1: #e0e4e4;
 
   /* Container borders */
   --sub-container-border: #e0e4ea;
@@ -19,6 +20,7 @@ body {
   /* Text Colors */
   --heading-text: #0e121b;
   --subheading-text-1: #525866;
+  --subheading-text-2: #2b303b;
   --body-text-1: #555555;
 
   --nav-item-text-color: #2b303b;
@@ -75,7 +77,7 @@ body {
   --input-field-info-text: #525866;
   --input-field-disabled-bg: #f5f7fa;
   --input-field-hover-bg: #f5f7fa;
-
+  --input-item-icon-color: #2b303b;
   /* warning text color */
   --warning-color: #fb3748;
 
@@ -90,6 +92,15 @@ body {
   --modal-bg: #ffffff;
   --modal-icon-bg: #f3f5f8;
   --modal-icon-color: #0e121b;
+
+  /* theme options */
+  --option-bg: #ffffff;
+  --option-hover-bg: #f3f5f8;
+  --option-icon-bg: #ffffff;
+  --option-border: #e0e4ea;
+  --option-icon-border: #e0e4ea;
+  --option-label-text: #0e121b;
+  --option-description: #2b303b;
 }
 
 .dark {

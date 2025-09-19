@@ -29,7 +29,7 @@ const NotesLayout = () => {
       </aside>
 
       {/* page content */}
-      <main className="flex-1 overflow-y-auto pb-16 lg:pb-0">
+      <main className="flex-1 pb-16 lg:pb-0 flex flex-col">
         <header
           className="hidden lg:flex w-full flex items-center justify-between px-8
             h-[80px] border-b border-(--divider)"
@@ -59,7 +59,9 @@ const NotesLayout = () => {
             </h1>
           </header>
         </div>
-        <Outlet />
+        <div className="flex-1 overflow-y-auto min-h-0">
+          <Outlet />
+        </div>
       </main>
       {/* tab + mobile divider */}
       <div className={"lg:hidden flex flex-col"}>

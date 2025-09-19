@@ -23,9 +23,15 @@ const PasswordTextInput = (props: PasswordTextInputProps) => {
             size={20}
             onClick={toggle}
             className="cursor-pointer"
+            color="#cacfd8"
           />
         ) : (
-          <IoEyeOutline size={24} onClick={toggle} className="cursor-pointer" />
+          <IoEyeOutline
+            size={20}
+            onClick={toggle}
+            className="cursor-pointer"
+            color="#cacfd8"
+          />
         )
       }
     />

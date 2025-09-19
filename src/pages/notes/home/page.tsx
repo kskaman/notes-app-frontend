@@ -1,4 +1,5 @@
 import Button from "../../../ui/Button";
+import InfoText from "../components/info-text";
 
 const AllNotesPage = () => {
   const collections: { title: string }[] = [];
@@ -27,10 +28,12 @@ const AllNotesPage = () => {
       {/* If there are no notes, display a message  
       else display list of notes */}
       {collections.length === 0 ? (
-        <p className="p-2 rounded-[8px] bg-[#e0e4e4] text-preset-5">
-          You don't have any notes yet. Start a new collection or note to
-          capture your thoughts and ideas.
-        </p>
+        <InfoText>
+          <span>
+            You don't have any notes yet. Start a new collection or note to
+            capture your thoughts and ideas.
+          </span>
+        </InfoText>
       ) : (
         collections.map((collection) => (
           <div key={collection.title}>{collection.title}</div>

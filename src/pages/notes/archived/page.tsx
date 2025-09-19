@@ -1,3 +1,5 @@
+import InfoText from "../components/info-text";
+
 const ArchivedPage = () => {
   const archivedNotes: { title: string }[] = [];
 
@@ -15,9 +17,11 @@ const ArchivedPage = () => {
       {/* If there are no notes, display a message  
       else display list of notes */}
       {archivedNotes.length === 0 ? (
-        <p className="p-2 rounded-[8px] bg-[#e0e4e4] text-preset-5">
-          No notes have been archived yet. Move notes here for safekeeping.
-        </p>
+        <InfoText>
+          <span>
+            No notes have been archived yet. Move notes here for safekeeping.
+          </span>
+        </InfoText>
       ) : (
         archivedNotes.map((note) => <div key={note.title}>{note.title}</div>)
       )}

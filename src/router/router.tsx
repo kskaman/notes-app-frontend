@@ -14,6 +14,9 @@ import Loader from "../ui/Loader";
 import { QueryClientProvider } from "@tanstack/react-query";
 import queryClient from "../lib/queryClient";
 import SearchPage from "../pages/notes/search/page";
+import ChangePasswordPage from "../pages/notes/settings/change-password";
+import FontThemePage from "../pages/notes/settings/font-theme";
+import ColorThemePage from "../pages/notes/settings/color-theme";
 
 export const router = createBrowserRouter([
   {
@@ -55,6 +58,23 @@ export const router = createBrowserRouter([
             path: "/settings",
             element: <SettingsPage />,
             handle: { header: "Settings" },
+            children: [
+              {
+                path: "change-password",
+                element: <ChangePasswordPage />,
+                handle: { header: "Change Password" },
+              },
+              {
+                path: "font-theme",
+                element: <FontThemePage />,
+                handle: { header: "Font Theme" },
+              },
+              {
+                path: "color-theme",
+                element: <ColorThemePage />,
+                handle: { header: "Color Theme" },
+              },
+            ],
           },
         ],
       },
