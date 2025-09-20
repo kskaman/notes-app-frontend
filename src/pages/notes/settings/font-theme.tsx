@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Button from "../../../ui/Button";
-import SettingsSubLayout from "./sub-layout";
+import SettingsSubLayout from "./sub-page";
 import fontThemeOptions from "../../../constants/fontThemeOptions";
 import ThemeOption from "../../../ui/theme-option";
 

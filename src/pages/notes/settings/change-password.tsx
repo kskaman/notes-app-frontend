@@ -1,5 +1,5 @@
 import { Controller, useForm } from "react-hook-form";
-import SettingsSubLayout from "./sub-layout";
+import SettingsSubLayout from "./sub-page";
 import PasswordTextInput from "../../../ui/PasswordTextInput";
 import Button from "../../../ui/Button";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -43,7 +43,7 @@ const ChangePasswordPage = () => {
   return (
     <SettingsSubLayout heading="Change Password">
       <form
-        className="w-full lg:w-[572px] flex flex-col gap-4"
+        className="w-full lg:max-w-[572px] flex flex-col gap-4"
         onSubmit={handleSubmit(onSubmit)}
       >
         <Controller

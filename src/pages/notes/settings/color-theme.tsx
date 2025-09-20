@@ -1,6 +1,6 @@
 import { useState } from "react";
 import colorThemeOptions from "../../../constants/colorThemeOptions";
-import SettingsSubLayout from "./sub-layout";
+import SettingsSubLayout from "./sub-page";
 import ThemeOption from "../../../ui/theme-option";
 import Button from "../../../ui/Button";
 
@@ -22,7 +22,7 @@ const ColorThemePage = () => {
           e.preventDefault();
           handleApply();
         }}
-        className="flex flex-col gap-4 w-full lg:w-[528px]"
+        className="flex flex-col gap-4 w-full"
       >
         {colorThemeOptions.map((option) => (
           <ThemeOption
