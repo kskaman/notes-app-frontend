@@ -3,13 +3,20 @@ import colorThemeOptions from "../../../constants/colorThemeOptions";
 import SettingsSubLayout from "./sub-page";
 import ThemeOption from "../../../ui/theme-option";
 import Button from "../../../ui/Button";
+import store from "../../../store/store";
 
 const ColorThemePage = () => {
-  const [selectedTheme, setSelectedTheme] = useState<"light" | "dark">("light");
+  const [selectedTheme, setSelectedTheme] = useState<"light" | "dark">(() => {
+    const user = store.getState().user;
+    return "colorTheme" in user &&
+      (user.colorTheme === "light" || user.colorTheme === "dark")
+      ? user.colorTheme
+      : "light";
+  });
 
-  const handleApply = () => {
+  const handleApply = (value: "light" | "dark") => {
     // Logic to apply the selected theme
-    console.log("Font changed to:", selectedTheme);
+    store.dispatch({ type: "user/updateColorTheme", payload: value });
   };
 
   return (
@@ -20,7 +27,7 @@ const ColorThemePage = () => {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          handleApply();
+          handleApply(selectedTheme);
         }}
         className="flex flex-col gap-4 w-full"
       >

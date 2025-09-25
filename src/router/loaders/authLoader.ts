@@ -1,7 +1,6 @@
 import { redirect } from "react-router";
-
+import users from "../../data/users.json";
 import { parseToken } from "../../utils/tokens";
-import { fetchUsers } from "../../api/auth";
 
 export async function authLoader() {
   const token = localStorage.getItem("accessToken");
@@ -13,7 +12,6 @@ export async function authLoader() {
     throw redirect("/auth/login");
   }
 
-  const users = await fetchUsers();
   const user = users.find((u) => u.id === userId);
 
   if (!user) {

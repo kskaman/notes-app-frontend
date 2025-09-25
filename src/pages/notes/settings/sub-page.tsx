@@ -16,7 +16,7 @@ const SettingsSubLayout = ({ heading, subHeading = null, children }: Props) => {
       {isMobile && <MobileTopBar />}
       <div
         className="flex flex-col gap-4
-      overflow-y-auto h-full w-full py-6 px-8"
+      overflow-y-auto h-full w-full lg:max-w-[570px] py-6 px-8"
       >
         {/* heading and subheading */}
 

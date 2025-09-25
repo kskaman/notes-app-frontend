@@ -11,13 +11,12 @@ import ArchivedPage from "../pages/notes/archived/page";
 import SettingsPage from "../pages/notes/settings/page";
 import AllNotesPage from "../pages/notes/home/page";
 import Loader from "../ui/Loader";
-import { QueryClientProvider } from "@tanstack/react-query";
-import queryClient from "../lib/queryClient";
 import SearchPage from "../pages/notes/search/page";
 import ChangePasswordPage from "../pages/notes/settings/change-password";
 import FontThemePage from "../pages/notes/settings/font-theme";
 import ColorThemePage from "../pages/notes/settings/color-theme";
-
+import { Provider } from "react-redux";
+import store from "../store/store";
 export const router = createBrowserRouter([
   {
     element: (
@@ -33,9 +32,9 @@ export const router = createBrowserRouter([
         path: "/",
         loader: authLoader,
         element: (
-          <QueryClientProvider client={queryClient}>
+          <Provider store={store}>
             <NotesLayout />
-          </QueryClientProvider>
+          </Provider>
         ),
         children: [
           { index: true, element: <Navigate to="/home" replace /> },

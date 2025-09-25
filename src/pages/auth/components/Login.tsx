@@ -56,7 +56,6 @@ const Login = () => {
         setErrorMessage("Invalid email or password.");
         return;
       }
-      console.log("Login successful:", result);
       login({ token: result.token! });
     } catch {
       setErrorMessage("Invalid credentials.");

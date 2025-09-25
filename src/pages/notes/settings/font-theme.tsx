@@ -3,15 +3,24 @@ import Button from "../../../ui/Button";
 import SettingsSubLayout from "./sub-page";
 import fontThemeOptions from "../../../constants/fontThemeOptions";
 import ThemeOption from "../../../ui/theme-option";
+import store from "../../../store/store";
 
 const FontThemePage = () => {
   const [selectedTheme, setSelectedTheme] = useState<
     "sans-serif" | "serif" | "monospace"
-  >("sans-serif");
+  >(() => {
+    const user = store.getState().user;
+    return "fontTheme" in user &&
+      (user.fontTheme === "sans-serif" ||
+        user.fontTheme === "serif" ||
+        user.fontTheme === "monospace")
+      ? user.fontTheme
+      : "sans-serif";
+  });
 
   const handleApply = () => {
     // Logic to apply the selected theme
-    console.log("Font changed to:", selectedTheme);
+    store.dispatch({ type: "user/updateFontTheme", payload: selectedTheme });
   };
 
   return (

@@ -4,9 +4,10 @@ import PasswordTextInput from "../../../ui/PasswordTextInput";
 import Button from "../../../ui/Button";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import store from "../../../store/store";
 
 const schema = yup.object({
-  oldPassword: yup.string().required("Old password is required"),
+  currentPassword: yup.string().required("Old password is required"),
   newPassword: yup.string().required("New password is required"),
   confirmNewPassword: yup
     .string()
@@ -19,25 +20,30 @@ const ChangePasswordPage = () => {
     handleSubmit,
     formState: { isSubmitting },
   } = useForm<{
-    oldPassword: string;
+    currentPassword: string;
     newPassword: string;
     confirmNewPassword: string;
   }>({
     resolver: yupResolver(schema),
     defaultValues: {
-      oldPassword: "",
+      currentPassword: "",
       newPassword: "",
       confirmNewPassword: "",
     },
   });
 
   const onSubmit = (data: {
-    oldPassword: string;
+    currentPassword: string;
     newPassword: string;
     confirmNewPassword: string;
   }) => {
-    console.log("Change password data:", data);
-    // Handle password change logic here
+    store.dispatch({
+      type: "user/updatePassword",
+      payload: {
+        currentPassword: data.currentPassword,
+        newPassword: data.newPassword,
+      },
+    });
   };
 
   return (
@@ -47,7 +53,7 @@ const ChangePasswordPage = () => {
         onSubmit={handleSubmit(onSubmit)}
       >
         <Controller
-          name="oldPassword"
+          name="currentPassword"
           control={control}
           render={({ field, fieldState: { error } }) => (
             <PasswordTextInput

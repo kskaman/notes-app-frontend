@@ -3,12 +3,16 @@
         "id": "7f85eb89-6576-4c29-8dc1-a9e2edb630bb",
         "email": "emptyTestUser@example.com",
         "password" : "emptyPassword",
-        "name": "Empty Test User"
+        "name": "Empty Test User",
+        "colorTheme": "light",
+        "fontTheme": "sans-serif"
     },
     {
         "id": "76aaa072-b8c4-45ce-beb0-cb828285bc2d",
         "email": "testUser@example.com",
         "password" : "securePassword123",
-        "name": "Test User"
+        "name": "Test User",
+        "colorTheme": "light",
+        "fontTheme": "sans-serif"
     }
 ]
