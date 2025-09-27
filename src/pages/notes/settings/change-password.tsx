@@ -4,7 +4,8 @@ import PasswordTextInput from "../../../ui/PasswordTextInput";
 import Button from "../../../ui/Button";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import store from "../../../store/store";
+import { requestUpdatePassword } from "../../../api/userSettings";
+import { useState } from "react";
 
 const schema = yup.object({
   currentPassword: yup.string().required("Old password is required"),
@@ -15,6 +16,11 @@ const schema = yup.object({
     .required("Please confirm your new password"),
 });
 const ChangePasswordPage = () => {
+  const [response, setResponse] = useState<{
+    status: "success" | "error";
+    message: string;
+  } | null>(null);
+
   const {
     control,
     handleSubmit,
@@ -32,22 +38,31 @@ const ChangePasswordPage = () => {
     },
   });
 
-  const onSubmit = (data: {
+  const onSubmit = async (data: {
     currentPassword: string;
     newPassword: string;
     confirmNewPassword: string;
   }) => {
-    store.dispatch({
-      type: "user/updatePassword",
-      payload: {
-        currentPassword: data.currentPassword,
-        newPassword: data.newPassword,
-      },
-    });
+    const res = await requestUpdatePassword(
+      data.currentPassword,
+      data.newPassword
+    );
+    setResponse(res);
   };
 
   return (
     <SettingsSubLayout heading="Change Password">
+      <div className="h-8 flex items-center">
+        {response && (
+          <p
+            className={`text-sm ${
+              response.status === "success" ? "text-green-600" : "text-red-600"
+            }`}
+          >
+            {response.message}
+          </p>
+        )}
+      </div>
       <form
         className="w-full lg:max-w-[572px] flex flex-col gap-4"
         onSubmit={handleSubmit(onSubmit)}

@@ -3,7 +3,7 @@ import Button from "../../../ui/Button";
 import SettingsSubLayout from "./sub-page";
 import fontThemeOptions from "../../../constants/fontThemeOptions";
 import ThemeOption from "../../../ui/theme-option";
-import store from "../../../store/store";
+import store from "../../../api/store/store";
 
 const FontThemePage = () => {
   const [selectedTheme, setSelectedTheme] = useState<

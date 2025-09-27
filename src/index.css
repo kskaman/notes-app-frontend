@@ -29,6 +29,12 @@ body {
   --nav-item-icon-active-color: #335cff;
   --nav-item-bg-active: #f3f5f8;
 
+  --collection-card-bg: #ffffff;
+  --collection-card-border: #e0e4ea;
+  --collection-card-hover-bg: #f3f5f8;
+  --collection-card-text: #0e121b;
+  --collection-card-subtext: #2b303b;
+
   /* Primary Button */
   --btn-primary-bg: #335cff;
   --btn-primary-hover-bg: #2547d0;
@@ -101,6 +107,10 @@ body {
   --option-icon-border: #e0e4ea;
   --option-label-text: #0e121b;
   --option-description: #2b303b;
+
+  /* toast colors */
+  --toast-bg: #ffffff;
+  --toast-text: #0e121b;
 }
 
 .dark {

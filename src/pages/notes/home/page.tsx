@@ -1,9 +1,13 @@
+import { getAllCollections } from "../../../api/collections";
+import store from "../../../api/store/store";
 import Button from "../../../ui/Button";
 import InfoText from "../components/info-text";
+import CollectionCard from "./components/CollectionCard";
 
 const AllNotesPage = () => {
-  const collections: { title: string }[] = [];
-
+  const collections = getAllCollections();
+  console.log("store :", store.getState());
+  console.log("Collections:", collections);
   return (
     <div
       className="w-full 
@@ -35,9 +39,15 @@ const AllNotesPage = () => {
           </span>
         </InfoText>
       ) : (
-        collections.map((collection) => (
-          <div key={collection.title}>{collection.title}</div>
-        ))
+        <div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 
+          gap-4
+            "
+        >
+          {collections.map((collection) => (
+            <CollectionCard key={collection.id} collection={collection} />
+          ))}
+        </div>
       )}
     </div>
   );

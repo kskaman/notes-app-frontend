@@ -3,7 +3,7 @@ import colorThemeOptions from "../../../constants/colorThemeOptions";
 import SettingsSubLayout from "./sub-page";
 import ThemeOption from "../../../ui/theme-option";
 import Button from "../../../ui/Button";
-import store from "../../../store/store";
+import store from "../../../api/store/store";
 
 const ColorThemePage = () => {
   const [selectedTheme, setSelectedTheme] = useState<"light" | "dark">(() => {

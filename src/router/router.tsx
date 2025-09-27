@@ -16,7 +16,7 @@ import ChangePasswordPage from "../pages/notes/settings/change-password";
 import FontThemePage from "../pages/notes/settings/font-theme";
 import ColorThemePage from "../pages/notes/settings/color-theme";
 import { Provider } from "react-redux";
-import store from "../store/store";
+import store from "../api/store/store";
 export const router = createBrowserRouter([
   {
     element: (

@@ -12,10 +12,8 @@ const inactiveText = `text-(--nav-item-text-color)`;
 const activeText = `bg-(--nav-item-bg-active) text-(--nav-item-text-active-color)`;
 
 import PageLayout from "../components/page-layout";
-import store from "../../../store/store";
 
 const SettingsPage = () => {
-  console.log(store.getState());
   const items = SETTINGS_ITEMS.map(({ name, to, icon }) => (
     <NavLink
       to={to}
