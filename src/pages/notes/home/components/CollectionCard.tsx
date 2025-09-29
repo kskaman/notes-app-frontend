@@ -1,6 +1,14 @@
 import type { Collection } from "../../../../types/collection";
+import type { MenuOption } from "../../../../types/optionsButton";
+import OptionsMenu from "../../../../ui/options-button";
 
-const CollectionCard = ({ collection }: { collection: Collection }) => {
+const CollectionCard = ({
+  collection,
+  options,
+}: {
+  collection: Collection;
+  options: MenuOption[];
+}) => {
   return (
     <div
       key={collection.name}
@@ -10,9 +18,16 @@ const CollectionCard = ({ collection }: { collection: Collection }) => {
             hover:bg-(--collection-card-hover-bg)
             cursor-pointer
             text-(--collection-card-text)
+            flex flex-row gap-2
+            justify-between
             "
     >
-      {collection.name}
+      <div className="flex flex-col gap-3">
+        <div className="text-preset-3">{collection.name}</div>
+        <div className="text-preset-5">{collection.noteCount} note(s)</div>
+      </div>
+
+      <OptionsMenu options={options} />
     </div>
   );
 };

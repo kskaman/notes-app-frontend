@@ -3,4 +3,5 @@ export type Collection = {
   name: string;
   userId: string;
   noteIds: string[];
+  noteCount: number;
 };

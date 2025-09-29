@@ -11,7 +11,7 @@ const baseNavClasses = `
 const inactiveText = `text-(--nav-item-text-color)`;
 const activeText = `bg-(--nav-item-bg-active) text-(--nav-item-text-active-color)`;
 
-import PageLayout from "../components/page-layout";
+import SubPageLayout from "../components/sub-page-layout";
 
 const SettingsPage = () => {
   const items = SETTINGS_ITEMS.map(({ name, to, icon }) => (
@@ -46,14 +46,9 @@ const SettingsPage = () => {
 
   // Desktop View
   return (
-    <PageLayout
-      heading="Settings"
-      desktopLink="/settings/color-theme"
-      mobileLink="/settings"
-      rootPath="/settings"
-    >
+    <SubPageLayout heading="Settings" rootPath="/settings">
       {items}
-    </PageLayout>
+    </SubPageLayout>
   );
 };
 

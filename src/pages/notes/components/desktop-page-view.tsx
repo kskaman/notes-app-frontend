@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { Outlet } from "react-router";
+import DesktopHeader from "./page-headers/desktop-header";
 
 interface Props {
   heading: string;
@@ -9,13 +10,7 @@ interface Props {
 const DesktopPageView = ({ heading, children }: Props) => {
   return (
     <div className="flex flex-col h-full">
-      <header
-        className="flex w-full flex items-center justify-between px-8
-            h-[80px] border-b border-(--divider) shrink-0"
-      >
-        {/* desktop page header */}
-        <h1 className="text-preset-1">{heading}</h1>
-      </header>
+      <DesktopHeader heading={heading} />
       <div className="flex flex-1 flex-col lg:flex-row">
         <div
           className="w-[290px] h-full

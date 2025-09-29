@@ -1,5 +1,5 @@
 import { Controller, useForm } from "react-hook-form";
-import SettingsSubLayout from "./sub-page";
+import SettingsSubLayout from "./settings-sub-layout";
 import PasswordTextInput from "../../../ui/PasswordTextInput";
 import Button from "../../../ui/Button";
 import { yupResolver } from "@hookform/resolvers/yup";

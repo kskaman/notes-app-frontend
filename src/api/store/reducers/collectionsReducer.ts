@@ -1,19 +1,22 @@
-import { createSlice } from "@reduxjs/toolkit";
-import notes from "../../../data/collections.json";
-import { parseToken } from "../../../utils/tokens";
-
-const getInitialCollectionsState = () => {
-  const accessToken = localStorage.getItem("accessToken");
-  const userId = parseToken(accessToken!);
-
-  const userCollections = notes.filter((note) => note.userId === userId);
-  return userCollections ?? [];
-};
+import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import type { Collection } from "../../../types/collection";
 
 const collectionsSlice = createSlice({
-  name: "notes",
-  initialState: getInitialCollectionsState(),
-  reducers: {},
+  name: "collections",
+  initialState: [] as Collection[],
+  reducers: {
+    setCollections: (_state, action: PayloadAction<Collection[]>) => {
+      return action.payload;
+    },
+    resetCollections: () => {
+      return [];
+    },
+    addCollection: (state, action: PayloadAction<Collection>) => {
+      state.push(action.payload);
+    },
+  },
 });
 
+export const { setCollections, resetCollections, addCollection } =
+  collectionsSlice.actions;
 export default collectionsSlice.reducer;

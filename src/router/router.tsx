@@ -1,31 +1,43 @@
+// router.tsx
 import { createBrowserRouter, Navigate, Outlet } from "react-router";
-import AuthPage from "../pages/auth/AuthPage";
-import Login from "../pages/auth/components/Login";
-import Signup from "../pages/auth/components/Signup";
-import ForgotPassword from "../pages/auth/components/ForgotPassword";
-import NotesLayout from "../pages/notes/layout";
-import { authLoader } from "./loaders/authLoader";
-import AuthProvider from "../context/AuthProvider";
-import NotFound from "../pages/notFound/NotFound";
-import ArchivedPage from "../pages/notes/archived/page";
-import SettingsPage from "../pages/notes/settings/page";
-import AllNotesPage from "../pages/notes/home/page";
-import Loader from "../ui/Loader";
-import SearchPage from "../pages/notes/search/page";
-import ChangePasswordPage from "../pages/notes/settings/change-password";
-import FontThemePage from "../pages/notes/settings/font-theme";
-import ColorThemePage from "../pages/notes/settings/color-theme";
+import { Suspense, lazy } from "react";
 import { Provider } from "react-redux";
 import store from "../api/store/store";
+import AuthProvider from "../context/AuthProvider";
+import Loader from "../ui/Loader";
+import { authLoader } from "./loaders/authLoader";
+
+// Lazy imports
+const NotesLayout = lazy(() => import("../pages/notes/layout"));
+const AuthPage = lazy(() => import("../pages/auth/AuthPage"));
+const Login = lazy(() => import("../pages/auth/components/Login"));
+const Signup = lazy(() => import("../pages/auth/components/Signup"));
+const ForgotPassword = lazy(
+  () => import("../pages/auth/components/ForgotPassword")
+);
+const NotFound = lazy(() => import("../pages/notFound/NotFound"));
+const ArchivedPage = lazy(() => import("../pages/notes/archived/page"));
+const SettingsPage = lazy(() => import("../pages/notes/settings/page"));
+const AllNotesPage = lazy(() => import("../pages/notes/home/page"));
+const SearchPage = lazy(() => import("../pages/notes/search/page"));
+const ChangePasswordPage = lazy(
+  () => import("../pages/notes/settings/change-password")
+);
+const FontThemePage = lazy(() => import("../pages/notes/settings/font-theme"));
+const ColorThemePage = lazy(
+  () => import("../pages/notes/settings/color-theme")
+);
+
 export const router = createBrowserRouter([
   {
     element: (
       <AuthProvider>
-        <Outlet /> {/* children get context + useNavigate works */}
+        <Suspense fallback={<Loader />}>
+          <Outlet />
+        </Suspense>
       </AuthProvider>
     ),
-    hydrateFallbackElement: <Loader />, // shows while checking auth status
-    /* /notes/* */
+    hydrateFallbackElement: <Loader />,
     children: [
       {
         id: "authProtected",
@@ -33,7 +45,9 @@ export const router = createBrowserRouter([
         loader: authLoader,
         element: (
           <Provider store={store}>
-            <NotesLayout />
+            <Suspense fallback={<Loader />}>
+              <NotesLayout />
+            </Suspense>
           </Provider>
         ),
         children: [
@@ -77,10 +91,13 @@ export const router = createBrowserRouter([
           },
         ],
       },
-      /* /auth/* */
       {
         path: "auth",
-        element: <AuthPage />,
+        element: (
+          <Suspense fallback={<Loader />}>
+            <AuthPage />
+          </Suspense>
+        ),
         children: [
           { index: true, element: <Navigate to="/auth/login" replace /> },
           { path: "login", element: <Login /> },
@@ -88,8 +105,6 @@ export const router = createBrowserRouter([
           { path: "forgot-password", element: <ForgotPassword /> },
         ],
       },
-
-      /* catch all */
       { path: "*", element: <NotFound /> },
     ],
   },

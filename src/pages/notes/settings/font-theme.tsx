@@ -1,26 +1,23 @@
 import { useState } from "react";
 import Button from "../../../ui/Button";
-import SettingsSubLayout from "./sub-page";
+import SettingsSubLayout from "./settings-sub-layout";
 import fontThemeOptions from "../../../constants/fontThemeOptions";
 import ThemeOption from "../../../ui/theme-option";
-import store from "../../../api/store/store";
+import {
+  getFontTheme,
+  requestUpdateFontTheme,
+} from "../../../api/userSettings";
 
 const FontThemePage = () => {
   const [selectedTheme, setSelectedTheme] = useState<
     "sans-serif" | "serif" | "monospace"
   >(() => {
-    const user = store.getState().user;
-    return "fontTheme" in user &&
-      (user.fontTheme === "sans-serif" ||
-        user.fontTheme === "serif" ||
-        user.fontTheme === "monospace")
-      ? user.fontTheme
-      : "sans-serif";
+    return getFontTheme();
   });
 
   const handleApply = () => {
     // Logic to apply the selected theme
-    store.dispatch({ type: "user/updateFontTheme", payload: selectedTheme });
+    requestUpdateFontTheme(selectedTheme);
   };
 
   return (

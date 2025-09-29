@@ -1,22 +1,21 @@
 import { useState } from "react";
 import colorThemeOptions from "../../../constants/colorThemeOptions";
-import SettingsSubLayout from "./sub-page";
+import SettingsSubLayout from "./settings-sub-layout";
 import ThemeOption from "../../../ui/theme-option";
 import Button from "../../../ui/Button";
-import store from "../../../api/store/store";
+import {
+  getColorTheme,
+  requestUpdateColorTheme,
+} from "../../../api/userSettings";
 
 const ColorThemePage = () => {
-  const [selectedTheme, setSelectedTheme] = useState<"light" | "dark">(() => {
-    const user = store.getState().user;
-    return "colorTheme" in user &&
-      (user.colorTheme === "light" || user.colorTheme === "dark")
-      ? user.colorTheme
-      : "light";
-  });
+  const [selectedTheme, setSelectedTheme] = useState<"light" | "dark">(() =>
+    getColorTheme()
+  );
 
   const handleApply = (value: "light" | "dark") => {
     // Logic to apply the selected theme
-    store.dispatch({ type: "user/updateColorTheme", payload: value });
+    requestUpdateColorTheme(value);
   };
 
   return (

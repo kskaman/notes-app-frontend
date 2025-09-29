@@ -28,7 +28,7 @@ const NotesLayout = () => {
       )}
 
       {/* page content */}
-      <main className="flex-1 pb-16 lg:pb-0 flex flex-col">
+      <main className="flex-1 pb-16 lg:pb-0">
         <div className="h-full">
           <Outlet />
         </div>

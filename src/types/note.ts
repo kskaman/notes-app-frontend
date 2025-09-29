@@ -2,7 +2,7 @@ export type Note = {
   id: string;
   title: string;
   content: string;
-  lastEdited: Date;
+  lastEdited: string;
   collectionId: string;
   isArchived: boolean;
 };

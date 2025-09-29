@@ -36,15 +36,6 @@
     "isArchived": false
   },
   {
-    "id": "2c7b2818-762c-4a50-bffa-726f6b06e009",
-    "collectionId": "89a5dc7f-b300-41ec-8b68-7399ee0c76d7",
-    "userId": "76aaa072-b8c4-45ce-beb0-cb828285bc2d",
-    "title": "TypeScript Migration Guide",
-    "content": "Project migration steps:\n\n1. Initial Setup\n- Install TypeScript dependencies\n- Configure tsconfig.json\n- Set up build pipeline\n\n2. Migration Strategy\n- Start with newer modules\n- Add type definitions gradually\n- Use 'any' temporarily for complex cases\n\n3. Testing Approach\n- Update test configuration\n- Add type testing\n- Validate build process\n\nDeadline: End of Q4 2024",
-    "lastEdited": "2024-10-26T09:20:00Z",
-    "isArchived": true
-  },
-  {
     "id": "e5da041b-aa2d-40fb-b8c7-5a43c6b25dbf",
     "collectionId": "764219b7-0953-4249-9cae-5d0dd0ab1075",
     "userId": "76aaa072-b8c4-45ce-beb0-cb828285bc2d",
@@ -52,24 +43,6 @@
     "content": "Monday: Upper Body\n- Bench Press 4x8\n- Rows 4x10\n- Shoulder Press 3x12\n- Pull-ups 3 sets\n\nWednesday: Lower Body\n- Squats 4x8\n- Romanian Deadlifts 3x10\n- Lunges 3x12 each\n- Calf Raises 4x15\n\nFriday: Full Body\n- Deadlifts 3x5\n- Push-ups 3x12\n- Leg Press 3x12\n- Core Work\n\nCardio: Tuesday/Thursday - 30 min run",
     "lastEdited": "2024-10-25T18:10:00Z",
     "isArchived": false
-  },
-  {
-    "id": "e08bb387-a300-4f87-bb3e-7d101b1b3ce1",
-    "collectionId": "08f66191-937f-49a9-8857-6e7139032452",
-    "userId": "76aaa072-b8c4-45ce-beb0-cb828285bc2d",
-    "title": "Gift Ideas",
-    "content": "Birthday and Holiday Gift List:\n\nMom:\n- Cooking class subscription\n- Kindle Paperwhite\n- Spa day package\n\nDad:\n- Golf lessons\n- Wireless earbuds\n- BBQ accessories\n\nSister:\n- Art supplies set\n- Yoga mat kit\n- Coffee subscription\n\nBudget per person: $150-200",
-    "lastEdited": "2024-10-20T11:30:15Z",
-    "isArchived": true
-  },
-  {
-    "id": "cec75d5c-35f0-433b-ba4d-ad4273208fd5",
-    "collectionId": "89a5dc7f-b300-41ec-8b68-7399ee0c76d7",
-    "userId": "76aaa072-b8c4-45ce-beb0-cb828285bc2d",
-    "title": "React Component Library",
-    "content": "Custom Component Library Structure:\n\n1. Basic Components\n- Button\n- Input\n- Card\n- Modal\n\n2. Form Components\n- FormField\n- Select\n- Checkbox\n- RadioGroup\n\n3. Layout Components\n- Container\n- Grid\n- Flex\n\nAll components need:\n- TypeScript definitions\n- Unit tests\n- Storybook documentation\n- Accessibility support",
-    "lastEdited": "2024-10-15T14:23:45Z",
-    "isArchived": true
   },
   {
     "id": "c704c529-6eff-4cac-8d1b-bd8ef94257da",

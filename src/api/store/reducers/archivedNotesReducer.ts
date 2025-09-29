@@ -2,13 +2,13 @@ import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { Note } from "../../../types/note";
 
 const notesSlice = createSlice({
-  name: "notes",
+  name: "archivedNotes",
   initialState: [] as Note[],
   reducers: {
-    setNotes: (_state, action: PayloadAction<Note[]>) => {
+    setArchivedNotes: (_state, action: PayloadAction<Note[]>) => {
       return action.payload;
     },
-    resetNotes: () => {
+    resetArchivedNotes: () => {
       return [];
     },
     addNote: (state, action: PayloadAction<Note>) => {
@@ -17,5 +17,6 @@ const notesSlice = createSlice({
   },
 });
 
-export const { setNotes, resetNotes, addNote } = notesSlice.actions;
+export const { setArchivedNotes, resetArchivedNotes, addNote } =
+  notesSlice.actions;
 export default notesSlice.reducer;

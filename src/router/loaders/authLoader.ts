@@ -2,6 +2,11 @@ import { redirect } from "react-router";
 import users from "../../data/users.json";
 import { parseToken } from "../../utils/tokens";
 
+import { setInitialCollections } from "../../api/collections";
+import { setInitialNotes } from "../../api/notes";
+import { setInitialArchivedCollections } from "../../api/archivedCollections";
+import { setInitialArchivedNotes } from "../../api/archivedNotes";
+
 export async function authLoader() {
   const token = localStorage.getItem("accessToken");
   if (!token) throw redirect("/auth/login");
@@ -19,5 +24,8 @@ export async function authLoader() {
     throw redirect("/auth/login");
   }
 
-  return { token }; // becomes loader data with id "auth"
+  setInitialCollections(token);
+  setInitialNotes(token);
+  setInitialArchivedCollections(token);
+  setInitialArchivedNotes(token);
 }
