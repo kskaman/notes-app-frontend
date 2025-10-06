@@ -14,6 +14,19 @@ const collectionsSlice = createSlice({
     addCollection: (state, action: PayloadAction<Collection>) => {
       state.push(action.payload);
     },
+    renameCollection: (
+      state,
+      action: PayloadAction<{ id: string; newName: string }>
+    ) => {
+      return state.map((collection) =>
+        collection.id === action.payload.id
+          ? { ...collection, name: action.payload.newName }
+          : collection
+      );
+    },
+    deleteCollection: (state, action: PayloadAction<string>) => {
+      return state.filter((collection) => collection.id !== action.payload);
+    },
   },
 });
 

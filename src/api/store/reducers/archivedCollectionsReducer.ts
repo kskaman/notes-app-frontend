@@ -11,8 +11,8 @@ const archivedCollectionsSlice = createSlice({
     resetArchivedCollections: () => {
       return [];
     },
-    addCollection: (state, action: PayloadAction<Collection>) => {
-      state.push(action.payload);
+    deleteArchivedCollection: (state, action: PayloadAction<string>) => {
+      return state.filter((collection) => collection.id !== action.payload);
     },
   },
 });
@@ -20,6 +20,6 @@ const archivedCollectionsSlice = createSlice({
 export const {
   setArchivedCollections,
   resetArchivedCollections,
-  addCollection,
+  deleteArchivedCollection,
 } = archivedCollectionsSlice.actions;
 export default archivedCollectionsSlice.reducer;

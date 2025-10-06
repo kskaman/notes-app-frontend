@@ -4,7 +4,7 @@ import { parseToken } from "../../utils/tokens";
 
 import { setInitialCollections } from "../../api/collections";
 import { setInitialNotes } from "../../api/notes";
-import { setInitialArchivedCollections } from "../../api/archivedCollections";
+import { setInitialArchivedCollections } from "../../api/collections";
 import { setInitialArchivedNotes } from "../../api/archivedNotes";
 
 export async function authLoader() {

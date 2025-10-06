@@ -1,76 +1,127 @@
-import { getAllCollections } from "../../../api/collections";
+import {
+  archiveCollection,
+  deleteUnArchivedCollection,
+  getAllCollections,
+} from "../../../api/collections";
 import Button from "../../../ui/Button";
 import InfoText from "../components/info-text";
-import CollectionCard from "./components/CollectionCard";
+import CollectionCard from "../components/CollectionCard";
 import MainPageView from "../components/page-views/main-page-view";
+import TrashIcon from "../../../assets/icons/TrashIcon";
+import ArchivedIcon from "../../../assets/icons/ArchivedIcon";
+import ConfirmModal from "../../../ui/delete-modal";
+import { useState } from "react";
+import { useCollectionActionModal } from "../../../hooks/useCollectionActionModal";
 
 const AllNotesPage = () => {
   const collections = getAllCollections();
 
+  const modal = useCollectionActionModal({
+    onDelete: (id) => {
+      deleteUnArchivedCollection(id);
+    },
+    onArchive: (id) => {
+      archiveCollection(id);
+    },
+    onUnarchive: () => {},
+  });
+
+  const [editingId, setEditingId] = useState<string | null>(null);
+
   return (
-    <MainPageView heading="All Notes">
-      <div
-        className="w-full  h-full
+    <>
+      <MainPageView heading="All Notes">
+        <div
+          className="w-full  h-full
       py-5 pr-4 pl-8
       flex flex-col gap-4 overflow-y-auto"
-      >
-        <div className="flex items-center gap-4 flex-col md:flex-row">
-          <div className="w-full max-w-[250px]">
-            {/* Button to create a new note */}
-            <Button variant="primary" height="41px" icon="+">
-              Create New Collection
-            </Button>
+        >
+          <div className="flex items-center gap-4 flex-col md:flex-row">
+            <div className="w-full max-w-[250px]">
+              {/* Button to create a new note */}
+              <Button variant="primary" height="41px" icon="+">
+                Create New Collection
+              </Button>
+            </div>
+            <div className="w-full max-w-[250px]">
+              {/* Button to create a new note */}
+              <Button variant="primary" height="41px" icon="+">
+                Create New Note
+              </Button>
+            </div>
           </div>
-          <div className="w-full max-w-[250px]">
-            {/* Button to create a new note */}
-            <Button variant="primary" height="41px" icon="+">
-              Create New Note
-            </Button>
-          </div>
-        </div>
 
-        {/* If there are no notes, display a message  
+          {/* If there are no notes, display a message  
       else display list of notes */}
-        {collections.length === 0 ? (
-          <InfoText>
-            <span>
-              You don't have any notes yet. Start a new collection or note to
-              capture your thoughts and ideas.
-            </span>
-          </InfoText>
-        ) : (
-          <div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 
+          {collections.length === 0 ? (
+            <InfoText>
+              <span>
+                You don't have any notes yet. Start a new collection or note to
+                capture your thoughts and ideas.
+              </span>
+            </InfoText>
+          ) : (
+            <div
+              className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 
           gap-4 mt-6
             "
-          >
-            {collections.map((collection) => (
-              <CollectionCard
-                key={collection.id}
-                collection={collection}
-                options={[
-                  {
-                    id: "rename",
-                    label: "Rename",
-                    onClick: () => console.log("Rename clicked"),
-                  },
-                  {
-                    id: "delete",
-                    label: "Delete",
-                    onClick: () => console.log("Delete clicked"),
-                  },
-                  {
-                    id: "archive",
-                    label: "Archive",
-                    onClick: () => console.log("Archive clicked"),
-                  },
-                ]}
+            >
+              {collections.map((collection) => (
+                <CollectionCard
+                  key={collection.id}
+                  collection={collection}
+                  editing={editingId === collection.id}
+                  setEditingId={setEditingId}
+                  options={[
+                    {
+                      id: "rename",
+                      label: "Rename",
+                      onClick: () => setEditingId(collection.id),
+                    },
+                    {
+                      id: "delete",
+                      label: "Delete",
+                      onClick: () => modal.openDelete(collection.id),
+                    },
+                    {
+                      id: "archive",
+                      label: "Archive",
+                      onClick: () => modal.openArchive(collection.id),
+                    },
+                  ]}
+                />
+              ))}
+            </div>
+          )}
+        </div>
+      </MainPageView>
+
+      {/* Modal for delete and archive actions */}
+      {modal.isOpen && (
+        <ConfirmModal
+          title={modal.title}
+          description={modal.description}
+          icon={
+            modal.modal.type === "delete" ? (
+              <TrashIcon
+                color="var(--modal-icon-color)"
+                width={20}
+                height={20}
               />
-            ))}
-          </div>
-        )}
-      </div>
-    </MainPageView>
+            ) : (
+              <ArchivedIcon
+                color="var(--modal-icon-color)"
+                width={20}
+                height={20}
+              />
+            )
+          }
+          onCancel={modal.close}
+          onConfirm={modal.confirm}
+          confirmLabel={modal.confirmLabel}
+        />
+      )}
+    </>
   );
 };
 
