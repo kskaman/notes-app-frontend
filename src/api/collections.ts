@@ -56,16 +56,15 @@ export const deleteArchivedCollection = (id: string) => {
   store.dispatch({ type: "archivedCollections/deleteCollection", payload: id });
 };
 
-export const addCollection = (name: string, userId: string) => {
+export const createCollection = (name: string) => {
   store.dispatch({
     type: "collections/addCollection",
     payload: {
       id: crypto.randomUUID(),
       name,
-      userId,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-      notes: [],
+      userId: localStorage.getItem("userId"),
+      noteIds: [],
+      noteCount: 0,
     },
   });
 };
@@ -160,4 +159,13 @@ export const unarchiveCollection = (id: string) => {
     type: "archivedCollections/deleteArchivedCollection",
     payload: id,
   });
+};
+
+export const isCollectionNameTaken = (name: string) => {
+  const q = name.trim().toLowerCase();
+  const { collections, archivedCollections } = store.getState();
+  return (
+    collections.some((c) => c.name.trim().toLowerCase() === q) ||
+    archivedCollections.some((c) => c.name.trim().toLowerCase() === q)
+  );
 };

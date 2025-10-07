@@ -27,6 +27,7 @@ export interface TextInputProps {
   error?: { message?: string };
   /** informational text (shown when no error) */
   infoText?: string;
+  onFocus?: () => void;
 }
 
 const TextInput = ({
@@ -42,6 +43,7 @@ const TextInput = ({
   error,
   infoText,
   disabled = false,
+  onFocus,
 }: TextInputProps) => {
   const hasError = Boolean(error?.message);
   const borderColorClass = hasError
@@ -52,7 +54,7 @@ const TextInput = ({
   const message = hasError ? error!.message : infoText ? infoText : "";
 
   return (
-    <div className="w-full flex flex-col gap-[2px]">
+    <div className="w-full flex flex-col gap-[1px]">
       <div className="mb-[2px] flex justify-between items-center">
         {label && (
           <span className="text-preset-4 text-(--input-field-label-color)">
@@ -86,6 +88,7 @@ const TextInput = ({
           placeholder={placeholder}
           disabled={disabled}
           onChange={onChange}
+          onFocus={onFocus}
           className="
             flex-1 
             bg-transparent 
@@ -111,7 +114,7 @@ const TextInput = ({
 
       <span
         className="flex gap-1 items-start
-       min-h-5 mb-1"
+       min-h-5"
       >
         {message && (
           <>

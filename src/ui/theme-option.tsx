@@ -1,3 +1,5 @@
+import { FAMILY_CLASS } from "../constants/fontThemeOptions";
+
 interface ThemeOptionProps {
   id: string;
   title: string;
@@ -19,6 +21,9 @@ const ThemeOption = ({
   checked,
   onChange,
 }: ThemeOptionProps) => {
+  const familyClass =
+    FAMILY_CLASS[value as "sans-serif" | "serif" | "monospace"];
+
   return (
     <label
       htmlFor={id}
@@ -28,7 +33,7 @@ const ThemeOption = ({
         checked ? "bg-(--option-hover-bg)" : "bg-(--option-bg)"
       } cursor-pointer gap-4 h-[72px]`}
     >
-      <div className="flex items-center gap-4">
+      <div className={`flex items-center gap-4`}>
         <div
           className="flex items-center justify-center 
           border border-(--option-icon-border) rounded-[12px]
@@ -36,7 +41,7 @@ const ThemeOption = ({
         >
           <img src={icon} alt="theme option icon" className="w-5" />
         </div>
-        <div className="flex flex-col">
+        <div className={`flex flex-col ${familyClass}`}>
           <span className="text-preset-4 text-(--option-label-text)">
             {title}
           </span>

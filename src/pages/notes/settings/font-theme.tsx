@@ -1,12 +1,12 @@
 import { useState } from "react";
 import Button from "../../../ui/Button";
 import SettingsSubLayout from "./settings-sub-layout";
-import fontThemeOptions from "../../../constants/fontThemeOptions";
 import ThemeOption from "../../../ui/theme-option";
 import {
   getFontTheme,
   requestUpdateFontTheme,
 } from "../../../api/userSettings";
+import { fontThemeOptions } from "../../../constants/fontThemeOptions";
 
 const FontThemePage = () => {
   const [selectedTheme, setSelectedTheme] = useState<
@@ -18,6 +18,7 @@ const FontThemePage = () => {
   const handleApply = () => {
     // Logic to apply the selected theme
     requestUpdateFontTheme(selectedTheme);
+    document.documentElement.setAttribute("data-font-theme", selectedTheme);
   };
 
   return (

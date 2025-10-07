@@ -7,7 +7,7 @@ import ArchivedIcon from "../../../assets/icons/ArchivedIcon";
 import TrashIcon from "../../../assets/icons/TrashIcon";
 import { useCollectionActionModal } from "../../../hooks/useCollectionActionModal";
 import type { Collection } from "../../../types/collection";
-import ConfirmModal from "../../../ui/delete-modal";
+import ConfirmModal from "../../../ui/confirm-modal";
 import InfoText from "../components/info-text";
 import MainPageView from "../components/page-views/main-page-view";
 import CollectionCard from "../components/CollectionCard";

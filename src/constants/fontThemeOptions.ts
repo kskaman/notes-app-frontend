@@ -2,7 +2,7 @@ import sansIcon from "../assets/images/icon-font-sans-serif.svg";
 import serifIcon from "../assets/images/icon-font-serif.svg";
 import monoIcon from "../assets/images/icon-font-monospace.svg";
 
-const colorThemeOptions = [
+export const fontThemeOptions = [
   {
     id: "sans-serif",
     title: "Sans-serif",
@@ -26,4 +26,11 @@ const colorThemeOptions = [
   },
 ];
 
-export default colorThemeOptions;
+export const FAMILY_CLASS: Record<
+  "sans-serif" | "serif" | "monospace",
+  string
+> = {
+  "sans-serif": "font-sans",
+  serif: "font-serif",
+  monospace: "font-mono",
+};

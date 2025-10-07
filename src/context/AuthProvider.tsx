@@ -24,6 +24,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     setAccessToken(null);
     resetCollections();
     resetNotes();
+    document.documentElement.removeAttribute("data-font-theme");
     navigate("/auth/login", { replace: true });
   };
 

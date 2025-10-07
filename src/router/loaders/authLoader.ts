@@ -6,6 +6,7 @@ import { setInitialCollections } from "../../api/collections";
 import { setInitialNotes } from "../../api/notes";
 import { setInitialArchivedCollections } from "../../api/collections";
 import { setInitialArchivedNotes } from "../../api/archivedNotes";
+import { getFontTheme } from "../../api/userSettings";
 
 export async function authLoader() {
   const token = localStorage.getItem("accessToken");
@@ -28,4 +29,7 @@ export async function authLoader() {
   setInitialNotes(token);
   setInitialArchivedCollections(token);
   setInitialArchivedNotes(token);
+
+  const currentTheme = getFontTheme();
+  document.documentElement.setAttribute("data-font-theme", currentTheme);
 }
