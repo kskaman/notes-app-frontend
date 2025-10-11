@@ -14,6 +14,16 @@ const archivedCollectionsSlice = createSlice({
     deleteArchivedCollection: (state, action: PayloadAction<string>) => {
       return state.filter((collection) => collection.id !== action.payload);
     },
+    renameArchivedCollection: (
+      state,
+      action: PayloadAction<{ id: string; newName: string }>
+    ) => {
+      const { id, newName } = action.payload;
+      const collection = state.find((c) => c.id === id);
+      if (collection) {
+        collection.name = newName;
+      }
+    },
   },
 });
 

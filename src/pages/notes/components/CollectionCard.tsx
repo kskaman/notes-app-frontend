@@ -3,19 +3,23 @@ import type { Collection } from "../../../types/collection";
 import type { MenuOption } from "../../../types/optionsButton";
 import OptionsMenu from "../../../ui/options-button";
 import { renameCollection } from "../../../api/collections";
+import { useNavigate } from "react-router";
 
 const CollectionCard = ({
+  type,
   collection,
   options,
   editing = false,
   setEditingId = () => {},
 }: {
+  type: "archived" | "regular";
   collection: Collection;
   options: MenuOption[];
   editing?: boolean;
   setEditingId?: React.Dispatch<React.SetStateAction<string | null>>;
 }) => {
   const [value, setValue] = useState<string>(collection.name);
+  const navigate = useNavigate();
 
   return (
     <div
@@ -29,6 +33,9 @@ const CollectionCard = ({
             flex flex-row gap-2
             justify-between
             "
+      onDoubleClick={() =>
+        navigate(`/collections/${type[0] + "_" + collection.id}`)
+      }
     >
       <div className="flex flex-col gap-3">
         {editing ? (

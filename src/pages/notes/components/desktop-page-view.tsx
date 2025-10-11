@@ -13,7 +13,7 @@ const DesktopPageView = ({ heading, children }: Props) => {
       <DesktopHeader heading={heading} />
       <div className="flex flex-1 flex-col lg:flex-row">
         <div
-          className="w-[290px] h-full
+          className="w-[300px] h-full
         border-r border-(--divider)
         py-5 pr-4 pl-8 shrink-0
         flex flex-col gap-4 overflow-y-auto"

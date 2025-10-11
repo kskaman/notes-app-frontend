@@ -14,6 +14,19 @@ const notesSlice = createSlice({
     addNote: (state, action: PayloadAction<Note>) => {
       state.push(action.payload);
     },
+    renameArchivedNotes: (
+      state,
+      action: PayloadAction<{ id: string; newTitle: string }>
+    ) => {
+      return state.map((n) =>
+        n.id === action.payload.id
+          ? { ...n, title: action.payload.newTitle }
+          : n
+      );
+    },
+    deleteArchivedNote: (state, action: PayloadAction<{ id: string }>) => {
+      return state.filter((n) => n.id !== action.payload.id);
+    },
   },
 });
 

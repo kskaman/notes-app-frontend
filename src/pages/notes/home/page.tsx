@@ -11,13 +11,14 @@ import TrashIcon from "../../../assets/icons/TrashIcon";
 import ArchivedIcon from "../../../assets/icons/ArchivedIcon";
 import ConfirmModal from "../../../ui/confirm-modal";
 import { useState } from "react";
-import { useCollectionActionModal } from "../../../hooks/useCollectionActionModal";
+import { useActionModal } from "../../../hooks/useActionModal";
 import CreateModal from "../../../ui/create-modal";
 
 const AllNotesPage = () => {
   const collections = getAllCollections();
 
-  const modal = useCollectionActionModal({
+  const modal = useActionModal({
+    type: "collection",
     onDelete: (id) => {
       deleteUnArchivedCollection(id);
     },
@@ -58,17 +59,6 @@ const AllNotesPage = () => {
                 Create New Collection
               </Button>
             </div>
-            <div className="w-full max-w-[250px]">
-              {/* Button to create a new note */}
-              <Button
-                variant="primary"
-                height="41px"
-                icon="+"
-                onClick={() => setCreateModal({ isOpen: true, type: "note" })}
-              >
-                Create New Note
-              </Button>
-            </div>
           </div>
 
           {/* If there are no notes, display a message  
@@ -88,6 +78,7 @@ const AllNotesPage = () => {
             >
               {collections.map((collection) => (
                 <CollectionCard
+                  type="regular"
                   key={collection.id}
                   collection={collection}
                   editing={editingId === collection.id}

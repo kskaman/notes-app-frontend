@@ -3,9 +3,9 @@ import users from "../../data/users.json";
 import { parseToken } from "../../utils/tokens";
 
 import { setInitialCollections } from "../../api/collections";
-import { setInitialNotes } from "../../api/notes";
+import { setInitialNotes, setInitialArchivedNotes } from "../../api/notes";
 import { setInitialArchivedCollections } from "../../api/collections";
-import { setInitialArchivedNotes } from "../../api/archivedNotes";
+
 import { getFontTheme } from "../../api/userSettings";
 
 export async function authLoader() {

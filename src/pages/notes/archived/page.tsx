@@ -5,7 +5,7 @@ import {
 } from "../../../api/collections";
 import ArchivedIcon from "../../../assets/icons/ArchivedIcon";
 import TrashIcon from "../../../assets/icons/TrashIcon";
-import { useCollectionActionModal } from "../../../hooks/useCollectionActionModal";
+import { useActionModal } from "../../../hooks/useActionModal";
 import type { Collection } from "../../../types/collection";
 import ConfirmModal from "../../../ui/confirm-modal";
 import InfoText from "../components/info-text";
@@ -15,7 +15,8 @@ import CollectionCard from "../components/CollectionCard";
 const ArchivedPage = () => {
   const archivedCollections: Collection[] = getAllArchivedCollections();
 
-  const modal = useCollectionActionModal({
+  const modal = useActionModal({
+    type: "collection",
     onDelete: (id) => {
       deleteArchivedCollection(id);
     },
@@ -54,6 +55,7 @@ const ArchivedPage = () => {
             >
               {archivedCollections.map((collection) => (
                 <CollectionCard
+                  type="archived"
                   key={collection.id}
                   collection={collection}
                   options={[

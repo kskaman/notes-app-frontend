@@ -162,6 +162,11 @@ html[data-font-theme="monospace"] {
   --collection-card-text: #0e121b;
   --collection-card-subtext: #2b303b;
 
+  --notes-card-bg: #ffffff;
+  --notes-card-hover-bg: #f3f5f8;
+  --notes-card-text: #0e121b;
+  --notes-card-subtext: #2b303b;
+
   /* Primary Button */
   --btn-primary-bg: #335cff;
   --btn-primary-hover-bg: #2547d0;

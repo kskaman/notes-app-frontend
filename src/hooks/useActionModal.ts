@@ -3,12 +3,14 @@ import { useCallback, useMemo, useState } from "react";
 import type { ModalState } from "../types/modalState";
 
 type Options = {
+  type: "note" | "collection";
   onDelete: (id: string) => void | Promise<void>;
   onArchive: (id: string) => void | Promise<void>;
   onUnarchive: (id: string) => void | Promise<void>;
 };
 
-export function useCollectionActionModal({
+export function useActionModal({
+  type,
   onDelete,
   onArchive,
   onUnarchive,
@@ -41,24 +43,22 @@ export function useCollectionActionModal({
     switch (modal.type) {
       case "delete":
         return {
-          title: "Delete Collection",
-          description:
-            "Are you sure you want to delete this collection? This action cannot be undone.",
+          title: `Delete ${type}`,
+          description: `Are you sure you want to delete this ${type}? This action cannot be undone.`,
           confirmLabel: "Delete",
           intent: "danger" as const,
         };
       case "archive":
         return {
-          title: "Archive Collection",
-          description:
-            "Are you sure you want to archive this collection? You can unarchive it later.",
+          title: `Archive ${type}`,
+          description: `Are you sure you want to archive this ${type}? You can unarchive it later.`,
           confirmLabel: "Archive",
           intent: "neutral" as const,
         };
       case "unarchive":
         return {
-          title: "Unarchive Collection",
-          description: "Move this collection back to your active collections?",
+          title: `Unarchive ${type}`,
+          description: `Move this ${type} back to your active ${type}s?`,
           confirmLabel: "Unarchive",
           intent: "primary" as const,
         };
@@ -70,7 +70,7 @@ export function useCollectionActionModal({
           intent: "neutral" as const,
         };
     }
-  }, [modal.type]);
+  }, [modal.type, type]);
 
   return {
     // state

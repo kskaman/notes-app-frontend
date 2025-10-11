@@ -6,6 +6,7 @@ import store from "../api/store/store";
 import AuthProvider from "../context/AuthProvider";
 import Loader from "../ui/Loader";
 import { authLoader } from "./loaders/authLoader";
+import CollectionPage from "../pages/notes/collection/page";
 
 // Lazy imports
 const NotesLayout = lazy(() => import("../pages/notes/layout"));
@@ -56,6 +57,10 @@ export const router = createBrowserRouter([
             path: "/home",
             element: <AllNotesPage />,
             handle: { header: "All Notes" },
+          },
+          {
+            path: "/collections/:collection",
+            element: <CollectionPage />,
           },
           {
             path: "/archived",
