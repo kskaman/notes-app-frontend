@@ -14,6 +14,19 @@ const collectionsSlice = createSlice({
     addCollection: (state, action: PayloadAction<Collection>) => {
       state.push(action.payload);
     },
+    updateCollection: (
+      state,
+      action: PayloadAction<{
+        id: string;
+        updatedCollection: Partial<Collection>;
+      }>
+    ) => {
+      return state.map((collection) =>
+        collection.id === action.payload.id
+          ? { ...collection, ...action.payload.updatedCollection }
+          : collection
+      );
+    },
     renameCollection: (
       state,
       action: PayloadAction<{ id: string; newName: string }>

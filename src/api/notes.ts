@@ -102,6 +102,55 @@ export const renameNote = (
 };
 
 /**
+ * Create a new note
+ * Steps:
+ * 1) Generate a unique ID for the note.
+ * 2) Update the corresponding collection to include this note ID and increment noteCount.
+ * 3) Add the new note to the notes slice in the store.
+ */
+export const createNote = (title: string, collectionId: string) => {
+  const id =
+    typeof crypto !== "undefined" && "randomUUID" in crypto
+      ? crypto.randomUUID()
+      : `${Date.now()}_${Math.random().toString(36).slice(2)}`;
+
+  const collections = store.getState().collections;
+  const collection = collections.find((c) => c.id === collectionId);
+  if (!collection) return;
+
+  const newCollection = {
+    ...collection,
+    noteIds: [...(collection.noteIds ?? []), id],
+    noteCount: (collection.noteCount ?? 0) + 1,
+  };
+
+  // Step 2: Update collection in store.
+  store.dispatch({
+    type: "collections/updateCollection",
+    payload: {
+      id: newCollection.id,
+      updatedCollection: {
+        noteIds: newCollection.noteIds,
+        noteCount: newCollection.noteCount,
+      },
+    },
+  });
+
+  // Step 3: Add note to store.
+  store.dispatch({
+    type: "notes/addNote",
+    payload: {
+      id,
+      title,
+      content: "",
+      lastEdited: new Date().toISOString(),
+      collectionId,
+      isArchived: false,
+    },
+  });
+};
+
+/**
  * Delete a note from store and also remove it from its corresponding collection.
  * Steps:
  * 1) Read current state and locate the note (active or archived).

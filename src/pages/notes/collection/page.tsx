@@ -61,7 +61,12 @@ const CollectionPage = () => {
           <div className="flex items-center gap-4">
             <div className="w-full max-w-[250px]">
               {/* Button to create a new note */}
-              <Button variant="primary" height="41px" icon="+">
+              <Button
+                variant="primary"
+                height="41px"
+                icon="+"
+                onClick={() => setCreateModal({ isOpen: true, type: "note" })}
+              >
                 Create New Note
               </Button>
             </div>
@@ -115,7 +120,7 @@ const CollectionPage = () => {
                               onClick: () => modal.openDelete(note.id),
                             },
                             {
-                              id: "archive",
+                              id: "unarchive",
                               label: "Unarchive",
                               onClick: () => modal.openUnarchive(note.id),
                             },
@@ -163,6 +168,7 @@ const CollectionPage = () => {
         <CreateModal
           type={createModal.type!}
           onClose={() => setCreateModal({ isOpen: false })}
+          collectionId={c_id}
         />
       )}
     </>

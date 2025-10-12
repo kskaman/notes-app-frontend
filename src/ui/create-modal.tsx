@@ -4,31 +4,47 @@ import HDivider from "./HDivider";
 import Modal from "./modal";
 import TextInput from "./TextInput";
 import { createCollection, isCollectionNameTaken } from "../api/collections";
+import { createNote, isNoteNameTaken } from "../api/notes";
 
 interface Props {
   type: "note" | "collection";
   onClose: () => void;
+  collectionId?: string | null;
 }
 
-const CreateModal = ({ type, onClose }: Props) => {
-  const [collection, setCollection] = useState<string>("");
+const CreateModal = ({ type, onClose, collectionId }: Props) => {
+  const [document, setDocument] = useState<string>("");
   const [error, setError] = useState<{ message?: string } | undefined>(
     undefined
   );
 
   const handleSubmit = () => {
     if (type === "collection") {
-      if (collection.trim() === "") {
+      if (document.trim() === "") {
         setError({ message: "Collection name cannot be empty" });
         return;
-      } else if (isCollectionNameTaken(collection.trim())) {
+      } else if (isCollectionNameTaken(document.trim())) {
         setError({ message: "Collection already exists" });
         return;
       }
+      // Proceed with creation logic
+      createCollection(document.trim());
+    } else if (type === "note") {
+      if (collectionId === null || collectionId === undefined) {
+        return;
+      }
+
+      if (document.trim() === "") {
+        setError({ message: "Note content cannot be empty" });
+        return;
+      } else if (isNoteNameTaken(document.trim())) {
+        setError({ message: "Note with this content already exists" });
+        return;
+      }
+      // Proceed with creation logic for note
+      createNote(document.trim(), collectionId);
     }
 
-    // Proceed with creation logic
-    createCollection(collection.trim());
     onClose();
   };
 
@@ -44,11 +60,20 @@ const CreateModal = ({ type, onClose }: Props) => {
               type="text"
               label="Collection Name"
               placeholder="Enter the name of the collection"
-              value={collection}
-              onChange={(e) => setCollection(e.target.value)}
+              value={document}
+              onChange={(e) => setDocument(e.target.value)}
               error={error}
             />
-          ) : null}
+          ) : (
+            <TextInput
+              type="text"
+              label="Note's Name"
+              placeholder="Enter the name of the note"
+              value={document}
+              onChange={(e) => setDocument(e.target.value)}
+              error={error}
+            />
+          )}
         </div>
         <HDivider />
         <div

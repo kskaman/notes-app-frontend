@@ -155,7 +155,7 @@ export const deleteArchivedCollection = (id: string) => {
 
   // Step 3: Remove the archived collection entry.
   store.dispatch({
-    type: "archivedCollections/deleteCollection",
+    type: "archivedCollections/deleteArchivedCollection",
     payload: id,
   });
 };
@@ -299,7 +299,7 @@ export const unarchiveCollection = (id: string) => {
 
   // Step 4: Remove from archived collections.
   store.dispatch({
-    type: "archivedCollections/deleteCollection",
+    type: "archivedCollections/deleteArchivedCollection",
     payload: id,
   });
 };

@@ -19,7 +19,9 @@ const DesktopHeader = ({ heading }: { heading: string }) => {
           variant="icon"
           width="10px"
           icon={<img src={leftArrowIcon} />}
-          onClick={() => navigate(-1)}
+          onClick={() => {
+            navigate(-1);
+          }}
         />
       )}
       {/* desktop page header */}

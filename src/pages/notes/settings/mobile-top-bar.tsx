@@ -16,7 +16,7 @@ const MobileTopBar = () => {
         <img src={logo} alt="logo" className="h-7 w-auto" />
       </div>
       <div className="flex items-start justify-start m-4">
-        <Button variant="text" onClick={() => navigate("/settings")}>
+        <Button variant="text" onClick={() => navigate(-1)}>
           <div className="flex gap-0 items-center justify-start">
             <img src={leftArrowIcon} alt="Back" className="w-4" />
             <span>Settings</span>
