@@ -11,7 +11,7 @@ import { useCollectionId } from "../../../hooks/useCollectionId";
 import Button from "../../../ui/Button";
 import Divider from "../../../ui/Divider";
 import NoteCard from "../components/NoteCard";
-import SubPageLayout from "../components/sub-page-layout";
+import SubPageLayout from "../components/page-views/sub-page-layout";
 import ConfirmModal from "../../../ui/confirm-modal";
 import TrashIcon from "../../../assets/icons/TrashIcon";
 import ArchivedIcon from "../../../assets/icons/ArchivedIcon";

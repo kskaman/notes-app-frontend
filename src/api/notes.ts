@@ -78,6 +78,84 @@ export const getNotesForCollection = (
 };
 
 /**
+ * Get a single note by its ID from either active or archived slice.
+ * Steps:
+ * 1) Read current state.
+ * 2) Search active notes first, then archived notes.
+ * 3) Return the found note or undefined if not found.
+ */
+
+export const getNoteById = (id: string) => {
+  const state = store.getState();
+  const note =
+    state.notes.find((n) => n.id === id) ||
+    state.archivedNotes.find((n) => n.id === id);
+  return note;
+};
+
+/**
+ * Search notes by title across both active and archived slices.
+ * Steps:
+ * 1) Normalize the query (trim + lower).
+ * 2) If query is empty, return empty array.
+ * 3) Filter active notes for title matches.
+ * 4) Filter archived notes for title matches.
+ * 5) Combine and return results.
+ */
+export const getSearchNotes = (query: string) => {
+  const state = store.getState();
+  const q = query.trim().toLowerCase();
+  if (q === "") return [];
+
+  return [
+    ...state.notes.filter((n) => n.title.toLowerCase().includes(q)),
+    ...state.archivedNotes.filter((n) => n.title.toLowerCase().includes(q)),
+  ];
+};
+
+/**
+ * Update a note's title and/or content in either active or archived slice.
+ * Steps:
+ * 1) Read current state and locate the note (active or archived).
+ * 2) Create an updated note object with new fields and updated timestamp.
+ * 3) Replace the note in the appropriate slice and dispatch the updated slice.
+ */
+export const updateNote = (
+  id: string,
+  updates: { name?: string; content?: string }
+) => {
+  const state = store.getState();
+  const note =
+    state.notes.find((n) => n.id === id) ||
+    state.archivedNotes.find((n) => n.id === id);
+  if (!note) return;
+
+  const isArchived = note.isArchived;
+
+  const updatedNote = {
+    ...note,
+    title: updates.name ?? note.title,
+    content: updates.content ?? note.content,
+    lastEdited: new Date().toISOString(),
+  };
+
+  if (isArchived) {
+    // Update archived slice.
+    const newArchivedNotes = state.archivedNotes.map((n) =>
+      n.id === id ? updatedNote : n
+    );
+    store.dispatch({
+      type: "archivedNotes/setArchivedNotes",
+      payload: newArchivedNotes,
+    });
+  } else {
+    // Update active slice.
+    const newNotes = state.notes.map((n) => (n.id === id ? updatedNote : n));
+    store.dispatch({ type: "notes/setNotes", payload: newNotes });
+  }
+};
+
+/**
  * Rename a note in either active or archived slice.
  * Steps:
  * 1) Route the action to the correct slice based on isArchived.

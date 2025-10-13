@@ -8,5 +8,14 @@ export const useBack = () => {
 
   // Show back button only if not on settings page
   const showBack = path.includes("collections") || path.includes("notes");
-  return { showBack };
+
+  if (path.includes("/collections/")) {
+    const collectionType = path
+      .split("/collections/")[1]
+      ?.split("/")[0]
+      .split("_")[0];
+    const back_path = collectionType === "a" ? "/archived" : "/home";
+    return { showBack, back_path };
+  }
+  return { showBack, back_path: null };
 };

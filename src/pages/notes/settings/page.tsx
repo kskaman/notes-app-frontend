@@ -11,7 +11,7 @@ const baseNavClasses = `
 const inactiveText = `text-(--nav-item-text-color)`;
 const activeText = `bg-(--nav-item-bg-active) text-(--nav-item-text-active-color)`;
 
-import SubPageLayout from "../components/sub-page-layout";
+import SubPageLayout from "../components/page-views/sub-page-layout";
 
 const SettingsPage = () => {
   const items = SETTINGS_ITEMS.map(({ name, to, icon }) => (

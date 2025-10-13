@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import MobileHeader from "./page-headers/mobile-header";
+import MobileHeader from "../page-headers/mobile-header";
 
 interface Props {
   heading: string;

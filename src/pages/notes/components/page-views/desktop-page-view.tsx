@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { Outlet } from "react-router";
-import DesktopHeader from "./page-headers/desktop-header";
+import DesktopHeader from "../page-headers/desktop-header";
 
 interface Props {
   heading: string;

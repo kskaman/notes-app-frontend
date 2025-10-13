@@ -24,6 +24,7 @@ const SearchPage = lazy(() => import("../pages/notes/search/page"));
 const ChangePasswordPage = lazy(
   () => import("../pages/notes/settings/change-password")
 );
+const NotePage = lazy(() => import("../pages/notes/note/page"));
 const FontThemePage = lazy(() => import("../pages/notes/settings/font-theme"));
 const ColorThemePage = lazy(
   () => import("../pages/notes/settings/color-theme")
@@ -61,6 +62,12 @@ export const router = createBrowserRouter([
           {
             path: "/collections/:collection",
             element: <CollectionPage />,
+            children: [
+              {
+                path: ":noteId",
+                element: <NotePage />,
+              },
+            ],
           },
           {
             path: "/archived",

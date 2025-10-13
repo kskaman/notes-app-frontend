@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import useIsMobile from "../../../../hooks/useIsMobile";
 import DesktopHeader from "../page-headers/desktop-header";
 import MobileHeader from "../page-headers/mobile-header";
+import logo from "../../../../assets/logo.svg";
 
 const MainPageView = ({
   children,
@@ -16,7 +17,16 @@ const MainPageView = ({
     <div className="flex flex-col h-full">
       <div>
         {isMobile ? (
-          <MobileHeader heading={heading} />
+          <>
+            <div
+              className="w-full h-[54px] md:h-[74px]
+            flex items-center justify-start
+            px-4 md:px-8 bg-(--logo-bar-background)"
+            >
+              <img src={logo} alt="logo" className="h-7 w-auto" />
+            </div>
+            <MobileHeader heading={heading} />
+          </>
         ) : (
           <DesktopHeader heading={heading} />
         )}

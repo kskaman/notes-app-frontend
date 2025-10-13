@@ -1,15 +1,16 @@
-import { useState } from "react";
+import { useDeferredValue, useState } from "react";
 import SearchIcon from "../../../assets/icons/SearchIcon";
 import TextInput from "../../../ui/TextInput";
 import InfoText from "../components/info-text";
-import type { Note } from "../../../types/note";
 import MainPageView from "../components/page-views/main-page-view";
+import { getSearchNotes } from "../../../api/notes";
+import NoteCard from "../components/NoteCard";
+import Loader from "../../../ui/Loader";
 
 const SearchPage = () => {
   const [inputValue, setInputValue] = useState<string>("");
-
-  // TODO: implement note fetching
-  const notes: Note[] = [];
+  const deferredInputValue = useDeferredValue(inputValue);
+  const isLoading = deferredInputValue !== inputValue;
 
   return (
     <MainPageView heading={"Search Notes"}>
@@ -24,19 +25,38 @@ const SearchPage = () => {
           startIcon={<SearchIcon color="var(--input-item-icon-color)" />}
         />
 
-        {notes.length === 0 && inputValue.trim() !== "" && (
-          <InfoText>
-            <span>No notes found.</span>
-          </InfoText>
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <div>
+            <SearchResults query={deferredInputValue} />
+          </div>
         )}
-
-        {notes.map((note) => (
-          // Todo: implement note display
-          <div key={note.title}>{note.title}</div>
-        ))}
       </div>
     </MainPageView>
   );
 };
 
+function SearchResults({ query }: { query: string }) {
+  const notes = getSearchNotes(query);
+
+  return (
+    <>
+      {notes.length === 0 && query.trim() !== "" ? (
+        <InfoText>
+          <span>No notes found.</span>
+        </InfoText>
+      ) : (
+        notes.map((note) => (
+          // Todo: implement note display
+          <NoteCard
+            key={note.title}
+            type={note.isArchived ? "archived" : "regular"}
+            note={note}
+          />
+        ))
+      )}
+    </>
+  );
+}
 export default SearchPage;

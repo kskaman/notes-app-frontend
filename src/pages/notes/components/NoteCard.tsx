@@ -15,7 +15,7 @@ const NoteCard = ({
 }: {
   type: "archived" | "regular";
   note: Note;
-  options: MenuOption[];
+  options?: MenuOption[];
   editing?: boolean;
   setEditingId?: React.Dispatch<React.SetStateAction<string | null>>;
 }) => {
@@ -28,6 +28,16 @@ const NoteCard = ({
         flex flex-col gap-3
         bg-(--notes-card-bg) hover:bg-(--notes-card-hover-bg)
         cursor-pointer"
+      onClick={(e) => {
+        e.stopPropagation();
+        e.preventDefault();
+
+        navigate(
+          `/collections/${note.isArchived ? "a_" : "r_"}${note.collectionId}/${
+            note.id
+          }`
+        );
+      }}
     >
       <div className="flex justify-between items-center">
         {editing ? (
@@ -72,7 +82,7 @@ const NoteCard = ({
           </h3>
         )}
 
-        <OptionsMenu options={options} />
+        {options && <OptionsMenu options={options} />}
       </div>
       <span
         className="text-preset-5

@@ -5,7 +5,7 @@ import Button from "../../../../ui/Button";
 import leftArrowIcon from "../../../../assets/images/icon-arrow-left.svg";
 
 const DesktopHeader = ({ heading }: { heading: string }) => {
-  const showBack = useBack().showBack;
+  const { showBack, back_path } = useBack();
   const navigate = useNavigate();
 
   return (
@@ -20,6 +20,10 @@ const DesktopHeader = ({ heading }: { heading: string }) => {
           width="10px"
           icon={<img src={leftArrowIcon} />}
           onClick={() => {
+            if (back_path) {
+              navigate(back_path);
+              return;
+            }
             navigate(-1);
           }}
         />
