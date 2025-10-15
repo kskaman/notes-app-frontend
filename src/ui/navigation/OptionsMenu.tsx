@@ -73,7 +73,10 @@ export default function OptionsMenu({
         type="button"
         aria-haspopup="menu"
         aria-expanded={open}
-        onClick={() => setOpen((v) => !v)}
+        onClick={(e) => {
+          e.stopPropagation();
+          setOpen((v) => !v);
+        }}
         className={`inline-flex items-center 
           justify-center rounded-full p-2 hover:bg-gray-100
           focus:outline-none focus:ring-2 focus:ring-offset-2

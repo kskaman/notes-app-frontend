@@ -16,7 +16,7 @@ const SearchPage = () => {
 
   return (
     <StandardPageLayout heading={"Search Notes"} variant="main">
-      <div className="px-8 pt-4 pb-6">
+      <div className="pt-4 pb-6">
         <TextInput
           value={inputValue}
           placeholder="Search notes..."

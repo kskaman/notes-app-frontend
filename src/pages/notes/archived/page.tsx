@@ -6,7 +6,12 @@ import {
 import { ArchivedIcon, TrashIcon } from "../../../assets";
 import { useActionModal } from "../../../hooks";
 import type { Collection } from "../../../types";
-import { ConfirmModal, InfoText, StandardPageLayout, CollectionCard } from "../../../ui";
+import {
+  ConfirmModal,
+  InfoText,
+  StandardPageLayout,
+  CollectionCard,
+} from "../../../ui";
 
 const ArchivedPage = () => {
   const archivedCollections: Collection[] = getAllArchivedCollections();
@@ -27,7 +32,7 @@ const ArchivedPage = () => {
       <StandardPageLayout heading="Archived Notes" variant="main">
         <div
           className="w-full  h-full
-      py-5 pr-4 pl-8
+      
       flex flex-col gap-4 overflow-y-auto"
         >
           <p className="text-preset-5 text-[#2b303b]">
@@ -45,7 +50,7 @@ const ArchivedPage = () => {
             </InfoText>
           ) : (
             <div
-              className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 
+              className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 
           gap-4 mt-6
             "
             >

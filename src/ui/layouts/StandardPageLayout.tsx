@@ -5,33 +5,32 @@ import DesktopHeader from "../page-headers/desktop-header";
 import MobileHeader from "../page-headers/mobile-header";
 import type { StandardPageLayoutProps } from "../../types/layouts";
 
-const StandardPageLayout = ({ 
-  heading, 
-  children, 
+const StandardPageLayout = ({
+  heading,
+  children,
   variant = "main",
-  rootPath 
+  rootPath,
 }: StandardPageLayoutProps) => {
   const isMobile = useIsMobile();
   const location = useLocation();
-  
+
   const isAtRoot = rootPath ? location.pathname === rootPath : true;
   const layoutKey = isMobile ? "mobile" : "desktop";
 
   if (variant === "main") {
     // Main page layout (like home, archived)
     return (
-      <BaseLayout 
+      <BaseLayout
         showLogoBar={isMobile}
-        header={isMobile ? (
-          <MobileHeader heading={heading} />
-        ) : (
-          <DesktopHeader heading={heading} />
-        )}
+        header={
+          isMobile ? (
+            <MobileHeader heading={heading} />
+          ) : (
+            <DesktopHeader heading={heading} />
+          )
+        }
       >
-        <div className={isMobile ? 
-          "h-full w-full flex flex-col py-6 px-8 gap-4" : 
-          "h-full w-full"
-        }>
+        <div className={"h-full w-full flex flex-col py-4 px-8 gap-4"}>
           {children}
         </div>
       </BaseLayout>
@@ -45,7 +44,7 @@ const StandardPageLayout = ({
         <LogoBar />
         {isAtRoot ? (
           <BaseLayout header={<MobileHeader heading={heading} />}>
-            <div className="h-full w-full flex flex-col py-6 px-8 gap-4">
+            <div className="h-full w-full flex flex-col px-8 gap-4">
               {children}
             </div>
           </BaseLayout>
@@ -59,8 +58,11 @@ const StandardPageLayout = ({
   // Desktop sub-page layout
   return (
     <BaseLayout header={<DesktopHeader heading={heading} />}>
-      <div className="flex flex-1 flex-col lg:flex-row">
-        <div className="w-[300px] h-full border-r border-(--divider) py-5 pr-4 pl-8 shrink-0 flex flex-col gap-4 overflow-y-auto">
+      <div className="flex flex-1 flex-col lg:flex-row h-full">
+        <div
+          className="w-[300px] h-full border-r border-(--divider) 
+        py-4 pr-4 pl-8 shrink-0 flex flex-col gap-4 overflow-y-auto"
+        >
           {children}
         </div>
         <Outlet />

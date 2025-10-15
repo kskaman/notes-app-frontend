@@ -4,7 +4,14 @@ import {
   deleteUnArchivedCollection,
   getAllCollections,
 } from "../../../api/collections";
-import { Button, InfoText, CollectionCard, ConfirmModal, CreateModal, StandardPageLayout } from "../../../ui";
+import {
+  Button,
+  InfoText,
+  CollectionCard,
+  ConfirmModal,
+  CreateModal,
+  StandardPageLayout,
+} from "../../../ui";
 import { TrashIcon, ArchivedIcon } from "../../../assets";
 import { useActionModal } from "../../../hooks";
 
@@ -34,7 +41,10 @@ const AllNotesPage = () => {
   return (
     <>
       <StandardPageLayout heading="All Notes" variant="main">
-        <div className="flex flex-col gap-4 overflow-y-auto">
+        <div
+          className="w-full  h-full
+      py-5 flex flex-col gap-4 overflow-y-auto"
+        >
           <div className="flex items-center gap-4 flex-col md:flex-row">
             <div className="w-full max-w-[250px]">
               {/* Button to create a new note */}
@@ -62,7 +72,7 @@ const AllNotesPage = () => {
             </InfoText>
           ) : (
             <div
-              className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 
+              className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 
           gap-4 mt-6
             "
             >
