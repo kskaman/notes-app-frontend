@@ -1,4 +1,4 @@
-// router.tsx
+import { ErrorBoundary } from "react-error-boundary";
 import { createBrowserRouter, Navigate, Outlet } from "react-router";
 import { Suspense, lazy } from "react";
 import { Provider } from "react-redux";
@@ -7,6 +7,7 @@ import AuthProvider from "../context/AuthProvider";
 import { authLoader } from "./loaders/authLoader";
 import CollectionPage from "../pages/notes/collection/page";
 import { Loader } from "../ui";
+import AppErrorFallback from "./AppErrorFallback";
 
 // Lazy imports
 const NotesLayout = lazy(() => import("../pages/notes/layout"));
@@ -33,11 +34,13 @@ const ColorThemePage = lazy(
 export const router = createBrowserRouter([
   {
     element: (
-      <AuthProvider>
-        <Suspense fallback={<Loader />}>
-          <Outlet />
-        </Suspense>
-      </AuthProvider>
+      <ErrorBoundary FallbackComponent={AppErrorFallback}>
+        <AuthProvider>
+          <Suspense fallback={<Loader />}>
+            <Outlet />
+          </Suspense>
+        </AuthProvider>
+      </ErrorBoundary>
     ),
     hydrateFallbackElement: <Loader />,
     children: [
@@ -52,6 +55,7 @@ export const router = createBrowserRouter([
             </Suspense>
           </Provider>
         ),
+        errorElement: <AppErrorFallback />,
         children: [
           { index: true, element: <Navigate to="/home" replace /> },
           {
