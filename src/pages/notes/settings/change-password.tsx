@@ -1,11 +1,10 @@
 import { Controller, useForm } from "react-hook-form";
 import SettingsSubLayout from "./settings-sub-layout";
-import PasswordTextInput from "../../../ui/PasswordTextInput";
-import Button from "../../../ui/Button";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { requestUpdatePassword } from "../../../api/userSettings";
 import { useState } from "react";
+import { Button, PasswordTextInput } from "../../../ui";
 
 const schema = yup.object({
   currentPassword: yup.string().required("Old password is required"),

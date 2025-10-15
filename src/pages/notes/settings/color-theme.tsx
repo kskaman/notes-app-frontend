@@ -1,12 +1,11 @@
 import { useState } from "react";
-import colorThemeOptions from "../../../constants/colorThemeOptions";
 import SettingsSubLayout from "./settings-sub-layout";
-import ThemeOption from "../../../ui/theme-option";
-import Button from "../../../ui/Button";
 import {
   getColorTheme,
   requestUpdateColorTheme,
 } from "../../../api/userSettings";
+import { Button, ThemeOption } from "../../../ui";
+import colorThemeOptions from "../../../constants/theme/colorThemeOptions";
 
 const ColorThemePage = () => {
   const [selectedTheme, setSelectedTheme] = useState<"light" | "dark">(() =>

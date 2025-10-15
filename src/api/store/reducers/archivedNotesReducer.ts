@@ -1,35 +1,26 @@
-import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import type { Note } from "../../../types/note";
+import { createNoteReducers } from "../../../utils/state";
 
-const notesSlice = createSlice({
+const noteReducers = createNoteReducers<Note>();
+
+const archivedNotesSlice = createSlice({
   name: "archivedNotes",
   initialState: [] as Note[],
   reducers: {
-    setArchivedNotes: (_state, action: PayloadAction<Note[]>) => {
-      return action.payload;
-    },
-    resetArchivedNotes: () => {
-      return [];
-    },
-    addNote: (state, action: PayloadAction<Note>) => {
-      state.push(action.payload);
-    },
-    renameArchivedNotes: (
-      state,
-      action: PayloadAction<{ id: string; newTitle: string }>
-    ) => {
-      return state.map((n) =>
-        n.id === action.payload.id
-          ? { ...n, title: action.payload.newTitle }
-          : n
-      );
-    },
-    deleteArchivedNote: (state, action: PayloadAction<{ id: string }>) => {
-      return state.filter((n) => n.id !== action.payload.id);
-    },
+    setArchivedNotes: noteReducers.set,
+    resetArchivedNotes: noteReducers.reset,
+    addArchivedNote: noteReducers.add,
+    renameArchivedNote: noteReducers.rename,
+    deleteArchivedNote: noteReducers.deleteByIdObject,
   },
 });
 
-export const { setArchivedNotes, resetArchivedNotes, addNote } =
-  notesSlice.actions;
-export default notesSlice.reducer;
+export const { 
+  setArchivedNotes, 
+  resetArchivedNotes, 
+  addArchivedNote, 
+  renameArchivedNote, 
+  deleteArchivedNote 
+} = archivedNotesSlice.actions;
+export default archivedNotesSlice.reducer;

@@ -1,5 +1,5 @@
-import { createToken } from "../utils/tokens.js";
 import users from "../data/users.json";
+import { createToken } from "../utils";
 
 export interface LoginResult {
   token: string | null;

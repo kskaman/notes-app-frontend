@@ -2,9 +2,8 @@ import { Outlet } from "react-router";
 import { useState } from "react";
 import clsx from "clsx";
 
-import Sidebar from "./components/navbar/Sidebar";
-import BottomNavbar from "./components/navbar/BottomNavbar";
 import useIsMobile from "../../hooks/useIsMobile";
+import { BottomNavbar, Sidebar } from "../../ui";
 
 const NotesLayout = () => {
   const [expanded, setExpanded] = useState<boolean>(true);

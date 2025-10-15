@@ -4,9 +4,9 @@ import { Suspense, lazy } from "react";
 import { Provider } from "react-redux";
 import store from "../api/store/store";
 import AuthProvider from "../context/AuthProvider";
-import Loader from "../ui/Loader";
 import { authLoader } from "./loaders/authLoader";
 import CollectionPage from "../pages/notes/collection/page";
+import { Loader } from "../ui";
 
 // Lazy imports
 const NotesLayout = lazy(() => import("../pages/notes/layout"));

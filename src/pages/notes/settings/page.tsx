@@ -1,7 +1,8 @@
 import { NavLink } from "react-router";
 import clsx from "clsx";
-import { SETTINGS_ITEMS } from "../../../constants/settingsItems";
-import leftArrowIcon from "../../../assets/images/icon-arrow-left.svg";
+import { SETTINGS_ITEMS } from "../../../constants";
+import { StandardPageLayout } from "../../../ui";
+import leftArrowIcon from "../../../assets/icons/svg/icon-arrow-left.svg";
 
 const baseNavClasses = `
   flex items-center gap-2 justify-between py-[10px] px-3
@@ -10,8 +11,6 @@ const baseNavClasses = `
 
 const inactiveText = `text-(--nav-item-text-color)`;
 const activeText = `bg-(--nav-item-bg-active) text-(--nav-item-text-active-color)`;
-
-import SubPageLayout from "../components/page-views/sub-page-layout";
 
 const SettingsPage = () => {
   const items = SETTINGS_ITEMS.map(({ name, to, icon }) => (
@@ -46,9 +45,9 @@ const SettingsPage = () => {
 
   // Desktop View
   return (
-    <SubPageLayout heading="Settings" rootPath="/settings">
+    <StandardPageLayout heading="Settings" variant="sub" rootPath="/settings">
       {items}
-    </SubPageLayout>
+    </StandardPageLayout>
   );
 };
 

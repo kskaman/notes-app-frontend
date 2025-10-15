@@ -1,11 +1,13 @@
 import { useDeferredValue, useState } from "react";
-import SearchIcon from "../../../assets/icons/SearchIcon";
-import TextInput from "../../../ui/TextInput";
-import InfoText from "../components/info-text";
-import MainPageView from "../components/page-views/main-page-view";
+import {
+  InfoText,
+  Loader,
+  NoteCard,
+  StandardPageLayout,
+  TextInput,
+} from "../../../ui";
 import { getSearchNotes } from "../../../api/notes";
-import NoteCard from "../components/NoteCard";
-import Loader from "../../../ui/Loader";
+import { SearchIcon } from "../../../assets";
 
 const SearchPage = () => {
   const [inputValue, setInputValue] = useState<string>("");
@@ -13,7 +15,7 @@ const SearchPage = () => {
   const isLoading = deferredInputValue !== inputValue;
 
   return (
-    <MainPageView heading={"Search Notes"}>
+    <StandardPageLayout heading={"Search Notes"} variant="main">
       <div className="px-8 pt-4 pb-6">
         <TextInput
           value={inputValue}
@@ -33,7 +35,7 @@ const SearchPage = () => {
           </div>
         )}
       </div>
-    </MainPageView>
+    </StandardPageLayout>
   );
 };
 

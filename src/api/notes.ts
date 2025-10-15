@@ -1,9 +1,9 @@
 import notes from "../data/notes.json";
 import archivedNotes from "../data/archived-notes.json";
 
-import { parseToken } from "../utils/tokens";
 import store from "./store/store";
 import type { Collection } from "../types/collection";
+import { parseToken } from "../utils";
 
 /**
  * Initialize active notes for the current user from bundled JSON.

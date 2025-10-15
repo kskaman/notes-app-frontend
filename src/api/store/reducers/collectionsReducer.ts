@@ -1,19 +1,16 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { Collection } from "../../../types/collection";
+import { createCollectionReducers } from "../../../utils/state";
+
+const collectionReducers = createCollectionReducers<Collection>();
 
 const collectionsSlice = createSlice({
   name: "collections",
   initialState: [] as Collection[],
   reducers: {
-    setCollections: (_state, action: PayloadAction<Collection[]>) => {
-      return action.payload;
-    },
-    resetCollections: () => {
-      return [];
-    },
-    addCollection: (state, action: PayloadAction<Collection>) => {
-      state.push(action.payload);
-    },
+    setCollections: collectionReducers.set,
+    resetCollections: collectionReducers.reset,
+    addCollection: collectionReducers.add,
     updateCollection: (
       state,
       action: PayloadAction<{
@@ -21,28 +18,22 @@ const collectionsSlice = createSlice({
         updatedCollection: Partial<Collection>;
       }>
     ) => {
-      return state.map((collection) =>
-        collection.id === action.payload.id
-          ? { ...collection, ...action.payload.updatedCollection }
-          : collection
-      );
+      return collectionReducers.update(state, {
+        ...action,
+        payload: { id: action.payload.id, updates: action.payload.updatedCollection }
+      });
     },
-    renameCollection: (
-      state,
-      action: PayloadAction<{ id: string; newName: string }>
-    ) => {
-      return state.map((collection) =>
-        collection.id === action.payload.id
-          ? { ...collection, name: action.payload.newName }
-          : collection
-      );
-    },
-    deleteCollection: (state, action: PayloadAction<string>) => {
-      return state.filter((collection) => collection.id !== action.payload);
-    },
+    renameCollection: collectionReducers.rename,
+    deleteCollection: collectionReducers.deleteById,
   },
 });
 
-export const { setCollections, resetCollections, addCollection } =
-  collectionsSlice.actions;
+export const { 
+  setCollections, 
+  resetCollections, 
+  addCollection, 
+  updateCollection, 
+  renameCollection, 
+  deleteCollection 
+} = collectionsSlice.actions;
 export default collectionsSlice.reducer;

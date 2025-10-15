@@ -1,12 +1,11 @@
 import { useState } from "react";
-import Button from "../../../ui/Button";
 import SettingsSubLayout from "./settings-sub-layout";
-import ThemeOption from "../../../ui/theme-option";
 import {
   getFontTheme,
   requestUpdateFontTheme,
 } from "../../../api/userSettings";
-import { fontThemeOptions } from "../../../constants/fontThemeOptions";
+import { fontThemeOptions } from "../../../constants";
+import { Button, ThemeOption } from "../../../ui";
 
 const FontThemePage = () => {
   const [selectedTheme, setSelectedTheme] = useState<

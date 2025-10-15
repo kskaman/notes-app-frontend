@@ -1,12 +1,12 @@
 import { redirect } from "react-router";
 import users from "../../data/users.json";
-import { parseToken } from "../../utils/tokens";
 
 import { setInitialCollections } from "../../api/collections";
 import { setInitialNotes, setInitialArchivedNotes } from "../../api/notes";
 import { setInitialArchivedCollections } from "../../api/collections";
 
 import { getFontTheme } from "../../api/userSettings";
+import { parseToken } from "../../utils";
 
 export async function authLoader() {
   const token = localStorage.getItem("accessToken");

@@ -1,7 +1,7 @@
 import { useState, useMemo, useRef, useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
 import { getNoteById, updateNote } from "../../../api/notes";
-import Button from "../../../ui/Button";
+import { Button } from "../../../ui";
 
 const NotePage = () => {
   const navigate = useNavigate();

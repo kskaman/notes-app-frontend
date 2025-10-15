@@ -3,8 +3,7 @@ import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-import TextInput from "../../../ui/TextInput";
-import HDivider from "../../../ui/Divider";
+import { TextInput, Divider } from "../../../ui";
 import AuthFormWrapper from "./AuthFormWrapper";
 
 interface FormValues {
@@ -77,7 +76,7 @@ const ForgotPassword = () => {
       </AuthFormWrapper>
 
       {/* Divider */}
-      <HDivider />
+      <Divider />
 
       {/* Sign up link */}
       <p className="text-preset-5 text-(--subheading-text-1) text-center">

@@ -1,18 +1,12 @@
+import { useState } from "react";
 import {
   archiveCollection,
   deleteUnArchivedCollection,
   getAllCollections,
 } from "../../../api/collections";
-import Button from "../../../ui/Button";
-import InfoText from "../components/info-text";
-import CollectionCard from "../components/CollectionCard";
-import MainPageView from "../components/page-views/main-page-view";
-import TrashIcon from "../../../assets/icons/TrashIcon";
-import ArchivedIcon from "../../../assets/icons/ArchivedIcon";
-import ConfirmModal from "../../../ui/confirm-modal";
-import { useState } from "react";
-import { useActionModal } from "../../../hooks/useActionModal";
-import CreateModal from "../../../ui/create-modal";
+import { Button, InfoText, CollectionCard, ConfirmModal, CreateModal, StandardPageLayout } from "../../../ui";
+import { TrashIcon, ArchivedIcon } from "../../../assets";
+import { useActionModal } from "../../../hooks";
 
 const AllNotesPage = () => {
   const collections = getAllCollections();
@@ -39,12 +33,8 @@ const AllNotesPage = () => {
 
   return (
     <>
-      <MainPageView heading="All Notes">
-        <div
-          className="w-full  h-full
-      py-5 pr-4 pl-8
-      flex flex-col gap-4 overflow-y-auto"
-        >
+      <StandardPageLayout heading="All Notes" variant="main">
+        <div className="flex flex-col gap-4 overflow-y-auto">
           <div className="flex items-center gap-4 flex-col md:flex-row">
             <div className="w-full max-w-[250px]">
               {/* Button to create a new note */}
@@ -105,7 +95,7 @@ const AllNotesPage = () => {
             </div>
           )}
         </div>
-      </MainPageView>
+      </StandardPageLayout>
 
       {/* Modal for delete and archive actions */}
       {modal.isOpen && (

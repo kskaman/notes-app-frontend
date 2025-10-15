@@ -3,13 +3,10 @@ import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-import TextInput from "../../../ui/TextInput";
-import Button from "../../../ui/Button";
-import Divider from "../../../ui/Divider";
 import AuthFormWrapper from "./AuthFormWrapper";
-import PasswordTextInput from "../../../ui/PasswordTextInput";
 
-import googleIcon from "../../../assets/images/icon-google.svg";
+import googleIcon from "../../../assets/icons/svg/icon-google.svg";
+import { Button, Divider, PasswordTextInput, TextInput } from "../../../ui";
 
 interface FormValues {
   email: string;

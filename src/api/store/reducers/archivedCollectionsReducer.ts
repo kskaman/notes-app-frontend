@@ -1,35 +1,26 @@
-import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import type { Collection } from "../../../types/collection";
+import { createCollectionReducers } from "../../../utils/state";
+
+const collectionReducers = createCollectionReducers<Collection>();
 
 const archivedCollectionsSlice = createSlice({
   name: "archivedCollections",
   initialState: [] as Collection[],
   reducers: {
-    setArchivedCollections: (_state, action: PayloadAction<Collection[]>) => {
-      return action.payload;
-    },
-    resetArchivedCollections: () => {
-      return [];
-    },
-    deleteArchivedCollection: (state, action: PayloadAction<string>) => {
-      return state.filter((collection) => collection.id !== action.payload);
-    },
-    renameArchivedCollection: (
-      state,
-      action: PayloadAction<{ id: string; newName: string }>
-    ) => {
-      const { id, newName } = action.payload;
-      const collection = state.find((c) => c.id === id);
-      if (collection) {
-        collection.name = newName;
-      }
-    },
+    setArchivedCollections: collectionReducers.set,
+    resetArchivedCollections: collectionReducers.reset,
+    addArchivedCollection: collectionReducers.add,
+    deleteArchivedCollection: collectionReducers.deleteById,
+    renameArchivedCollection: collectionReducers.rename,
   },
 });
 
 export const {
   setArchivedCollections,
   resetArchivedCollections,
+  addArchivedCollection,
   deleteArchivedCollection,
+  renameArchivedCollection,
 } = archivedCollectionsSlice.actions;
 export default archivedCollectionsSlice.reducer;

@@ -3,10 +3,10 @@ import store from "./store/store";
 import collections from "../data/collections.json";
 import archivedCollections from "../data/archived-collections.json";
 
-import { parseToken } from "../utils/tokens";
 import { setCollections } from "./store/reducers/collectionsReducer";
 import { setArchivedCollections } from "./store/reducers/archivedCollectionsReducer";
 import type { Collection } from "../types/collection";
+import { parseToken } from "../utils";
 
 /**
  * Initialize ACTIVE collections for the current user from bundled JSON.

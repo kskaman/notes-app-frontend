@@ -8,14 +8,15 @@ import {
 } from "../../../api/notes";
 import { useActionModal } from "../../../hooks/useActionModal";
 import { useCollectionId } from "../../../hooks/useCollectionId";
-import Button from "../../../ui/Button";
-import Divider from "../../../ui/Divider";
-import NoteCard from "../components/NoteCard";
-import SubPageLayout from "../components/page-views/sub-page-layout";
-import ConfirmModal from "../../../ui/confirm-modal";
-import TrashIcon from "../../../assets/icons/TrashIcon";
-import ArchivedIcon from "../../../assets/icons/ArchivedIcon";
-import CreateModal from "../../../ui/create-modal";
+import {
+  Button,
+  Divider,
+  NoteCard,
+  ConfirmModal,
+  CreateModal,
+  StandardPageLayout,
+} from "../../../ui";
+import { TrashIcon, ArchivedIcon } from "../../../assets";
 
 const CollectionPage = () => {
   const { c_type, c_id, c_name } = useCollectionId();
@@ -49,8 +50,9 @@ const CollectionPage = () => {
 
   return (
     <>
-      <SubPageLayout
+      <StandardPageLayout
         heading={c_name ?? "Unknown Collection"}
+        variant="sub"
         rootPath={`/collections/${c_type}_${c_id}`}
       >
         <div
@@ -137,7 +139,7 @@ const CollectionPage = () => {
             </ul>
           )}
         </div>
-      </SubPageLayout>
+      </StandardPageLayout>
       {/* Modal for delete and archive actions */}
       {modal.isOpen && (
         <ConfirmModal

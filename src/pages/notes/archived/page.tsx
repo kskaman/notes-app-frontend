@@ -3,14 +3,10 @@ import {
   getAllArchivedCollections,
   unarchiveCollection,
 } from "../../../api/collections";
-import ArchivedIcon from "../../../assets/icons/ArchivedIcon";
-import TrashIcon from "../../../assets/icons/TrashIcon";
-import { useActionModal } from "../../../hooks/useActionModal";
-import type { Collection } from "../../../types/collection";
-import ConfirmModal from "../../../ui/confirm-modal";
-import InfoText from "../components/info-text";
-import MainPageView from "../components/page-views/main-page-view";
-import CollectionCard from "../components/CollectionCard";
+import { ArchivedIcon, TrashIcon } from "../../../assets";
+import { useActionModal } from "../../../hooks";
+import type { Collection } from "../../../types";
+import { ConfirmModal, InfoText, StandardPageLayout, CollectionCard } from "../../../ui";
 
 const ArchivedPage = () => {
   const archivedCollections: Collection[] = getAllArchivedCollections();
@@ -28,7 +24,7 @@ const ArchivedPage = () => {
 
   return (
     <>
-      <MainPageView heading="Archived Notes">
+      <StandardPageLayout heading="Archived Notes" variant="main">
         <div
           className="w-full  h-full
       py-5 pr-4 pl-8
@@ -75,7 +71,7 @@ const ArchivedPage = () => {
             </div>
           )}
         </div>
-      </MainPageView>
+      </StandardPageLayout>
 
       {/* Modal for delete and archive actions */}
       {modal.isOpen && (

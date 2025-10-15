@@ -1,6 +1,6 @@
-import Button from "../../../ui/Button";
 import { useNavigate } from "react-router";
-import leftArrowIcon from "../../../assets/images/icon-arrow-left.svg";
+import leftArrowIcon from "../../../assets/icons/svg/icon-arrow-left.svg";
+import { Button } from "../../../ui";
 
 const MobileTopBar = () => {
   const navigate = useNavigate();

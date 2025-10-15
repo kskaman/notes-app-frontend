@@ -1,4 +1,3 @@
-// src/hooks/useCollectionModal.ts
 import { useCallback, useMemo, useState } from "react";
 import type { ModalState } from "../types/modalState";
 

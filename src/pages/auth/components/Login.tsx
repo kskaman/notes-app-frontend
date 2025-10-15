@@ -3,18 +3,15 @@ import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-import TextInput from "../../../ui/TextInput";
-import Button from "../../../ui/Button";
-import Divider from "../../../ui/Divider";
 import AuthFormWrapper from "./AuthFormWrapper";
-import PasswordTextInput from "../../../ui/PasswordTextInput";
+import { Button, Divider, PasswordTextInput, TextInput } from "../../../ui";
 
-import googleIcon from "../../../assets/images/icon-google.svg";
+import googleIcon from "../../../assets/icons/svg/icon-google.svg";
 
-import { useState } from "react";
 import { useAuth } from "../../../context/AuthContext";
 import { loginRequest } from "../../../api/auth";
-import { TEST_USERS } from "../../../constants/testUsers";
+import { TEST_USERS } from "../../../constants";
+import { useAsyncOperation, useErrorHandler } from "../../../utils";
 
 interface FormValues {
   email: string;
@@ -32,16 +29,13 @@ const schema = yup
   .required();
 
 const Login = () => {
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
-
   const { login } = useAuth();
+  const { handleError } = useErrorHandler();
 
-  const {
-    control,
-    handleSubmit,
-    setValue,
-    formState: { isSubmitting },
-  } = useForm<FormValues>({
+  // Update the type to match LoginResult, assuming it is { token: string | null }
+  const loginOperation = useAsyncOperation<{ token: string | null } | null>();
+
+  const { control, handleSubmit, setValue } = useForm<FormValues>({
     resolver: yupResolver(schema),
     defaultValues: {
       email: "testUser@example.com",
@@ -50,25 +44,37 @@ const Login = () => {
   });
 
   const onSubmit = async (data: FormValues) => {
-    try {
-      const result = await loginRequest(data.email, data.password);
-      if (!result || (result && result.token == null)) {
-        setErrorMessage("Invalid email or password.");
-        return;
+    await loginOperation.execute(
+      async () => {
+        const result = await loginRequest(data.email, data.password);
+        if (!result || !result.token) {
+          throw new Error("Invalid email or password");
+        }
+        return result;
+      },
+      {
+        onSuccess: (result) => {
+          if (result?.token) {
+            login({ token: result.token });
+          }
+        },
+        onError: (error) => {
+          console.error("Login failed:", handleError(error));
+        },
       }
-      login({ token: result.token! });
-    } catch {
-      setErrorMessage("Invalid credentials.");
-    }
+    );
   };
 
   return (
     <>
       <div className="w-full flex flex-col items-center gap-4">
         <div className="h-8">
-          {errorMessage && (
+          {loginOperation.error && (
             <p className="text-preset-5 text-(--warning-color) text-center">
-              {errorMessage}
+              {handleError(
+                loginOperation.error,
+                "Login failed. Please try again."
+              )}
             </p>
           )}
           {/* {showVerifyLink && (
@@ -87,7 +93,7 @@ const Login = () => {
         <AuthFormWrapper
           heading="Welcome"
           subHeading="Please log in to continue"
-          buttonText={isSubmitting ? "Submitting..." : "Submit"}
+          buttonText={loginOperation.loading ? "Submitting..." : "Submit"}
           onFormSubmit={handleSubmit(onSubmit)}
         >
           {/* Email */}
