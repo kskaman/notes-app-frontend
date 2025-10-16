@@ -1,6 +1,6 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback } from "react";
 
-// Enhanced form validation utilities
+// form validation utilities
 export interface ValidationRule<T = unknown> {
   validate: (value: T) => boolean;
   message: string;
@@ -24,9 +24,9 @@ export interface FormTouched {
 export const validationRules = {
   email: {
     validate: (value: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value),
-    message: 'Please enter a valid email address',
+    message: "Please enter a valid email address",
   },
-  
+
   minLength: (min: number) => ({
     validate: (value: string) => value.length >= min,
     message: `Must be at least ${min} characters long`,
@@ -43,14 +43,16 @@ export const validationRules = {
   }),
 
   password: {
-    validate: (value: string) => 
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#@_])[A-Za-z\d#@_]{8,20}$/.test(value),
-    message: '8–20 chars, upper, lower, digit & #@_',
+    validate: (value: string) =>
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#@_])[A-Za-z\d#@_]{8,20}$/.test(
+        value
+      ),
+    message: "8–20 chars, upper, lower, digit & #@_",
   },
 
   notEmpty: {
     validate: (value: string) => value.trim().length > 0,
-    message: 'This field is required',
+    message: "This field is required",
   },
 
   matchField: (compareValue: string, fieldName: string) => ({
@@ -64,8 +66,11 @@ export const validateField = <T>(
   value: T,
   validation: FieldValidation<T>
 ): string | null => {
-  if (validation.required && (!value || (typeof value === 'string' && value.trim() === ''))) {
-    return 'This field is required';
+  if (
+    validation.required &&
+    (!value || (typeof value === "string" && value.trim() === ""))
+  ) {
+    return "This field is required";
   }
 
   if (!validation.rules || !value) return null;
@@ -89,14 +94,17 @@ export const useFormValidation = <T extends Record<string, unknown>>(
   const [touched, setFieldTouched] = useState<FormTouched>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const setValue = useCallback(<K extends keyof T>(field: K, value: T[K]) => {
-    setValues((prev: T) => ({ ...prev, [field]: value }));
-    
-    // Clear error when user starts typing
-    if (errors[field as string]) {
-      setErrors((prev: FormErrors) => ({ ...prev, [field]: null }));
-    }
-  }, [errors]);
+  const setValue = useCallback(
+    <K extends keyof T>(field: K, value: T[K]) => {
+      setValues((prev: T) => ({ ...prev, [field]: value }));
+
+      // Clear error when user starts typing
+      if (errors[field as string]) {
+        setErrors((prev: FormErrors) => ({ ...prev, [field]: null }));
+      }
+    },
+    [errors]
+  );
 
   const setTouched = useCallback(<K extends keyof T>(field: K) => {
     setFieldTouched((prev: FormTouched) => ({ ...prev, [field]: true }));
@@ -111,16 +119,18 @@ export const useFormValidation = <T extends Record<string, unknown>>(
 
       const fieldValue = values[field as keyof T];
       const error = validateField(fieldValue, validation);
-      
+
       if (error) {
         newErrors[field] = error;
       } else if (validation.asyncValidation && fieldValue) {
         asyncValidations.push(
-          validation.asyncValidation(fieldValue).then((asyncError: string | null) => {
-            if (asyncError) {
-              newErrors[field] = asyncError;
-            }
-          })
+          validation
+            .asyncValidation(fieldValue)
+            .then((asyncError: string | null) => {
+              if (asyncError) {
+                newErrors[field] = asyncError;
+              }
+            })
         );
       }
     }
@@ -134,20 +144,23 @@ export const useFormValidation = <T extends Record<string, unknown>>(
     return Object.keys(newErrors).length === 0;
   }, [values, validationSchema]);
 
-  const validateSingleField = useCallback(async <K extends keyof T>(field: K): Promise<boolean> => {
-    const validation = validationSchema[field];
-    if (!validation) return true;
+  const validateSingleField = useCallback(
+    async <K extends keyof T>(field: K): Promise<boolean> => {
+      const validation = validationSchema[field];
+      if (!validation) return true;
 
-    const fieldValue = values[field];
-    let error = validateField(fieldValue, validation);
+      const fieldValue = values[field];
+      let error = validateField(fieldValue, validation);
 
-    if (!error && validation.asyncValidation && fieldValue) {
-      error = await validation.asyncValidation(fieldValue);
-    }
+      if (!error && validation.asyncValidation && fieldValue) {
+        error = await validation.asyncValidation(fieldValue);
+      }
 
-    setErrors((prev: FormErrors) => ({ ...prev, [field]: error }));
-    return !error;
-  }, [values, validationSchema]);
+      setErrors((prev: FormErrors) => ({ ...prev, [field]: error }));
+      return !error;
+    },
+    [values, validationSchema]
+  );
 
   const reset = useCallback(() => {
     setValues(initialValues);
@@ -156,7 +169,7 @@ export const useFormValidation = <T extends Record<string, unknown>>(
     setIsSubmitting(false);
   }, [initialValues]);
 
-  const isValid = Object.values(errors).every(error => !error);
+  const isValid = Object.values(errors).every((error) => !error);
 
   return {
     values,

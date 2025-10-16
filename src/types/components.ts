@@ -130,10 +130,10 @@ export interface OptionsMenuProps extends BaseComponentProps {
   position?: "top" | "bottom" | "left" | "right";
 }
 
-// Enhanced loading components
+// loading components
 export interface LoadingSpinnerProps extends BaseComponentProps {
-  size?: 'small' | 'medium' | 'large';
-  variant?: 'dots' | 'spinner' | 'pulse';
+  size?: "small" | "medium" | "large";
+  variant?: "dots" | "spinner" | "pulse";
   message?: string;
 }
 
@@ -142,12 +142,4 @@ export interface LoadingOverlayProps extends BaseComponentProps {
   message?: string;
   spinner?: boolean;
   backdrop?: boolean;
-}
-
-// Enhanced form input props
-export interface EnhancedTextInputProps extends TextInputProps {
-  validateOnChange?: boolean;
-  debounceDelay?: number;
-  showValidationIcon?: boolean;
-  validator?: (value: string) => Promise<string | null> | string | null;
 }
