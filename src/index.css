@@ -244,68 +244,114 @@ html[data-font-theme="monospace"] {
   --toast-bg: #ffffff;
   --toast-text: #0e121b;
 }
-
 .dark {
   /* Containers */
-  --main-container-bg: #121212;
-  --sub-container-bg: #1e1e1e;
-  --modal-bg: #1e1e1e;
-  --form-bg: #2c2c2c;
-  --auth-page-bg: #181818;
+  --main-container-bg: #0e0f12; /* main background */
+  --sub-container-bg: #181a1f; /* cards and panels */
+  --modal-bg: #1e2026; /* modals and sheets */
+  --form-bg: #1a1c21; /* form backgrounds */
+  --auth-page-bg: #0d0f13; /* login/signup page background */
+  --info-text-bg-1: #2c2f36; /* muted info backgrounds */
+
+  /* Container borders */
+  --sub-container-border: #2a2d34; /* soft dark border */
 
   /* Text Colors */
-  --heading-text: #f1f1f1;
-  --subheading-text: #e1e1e1;
-  --body-text-1: #cccccc;
+  --heading-text: #f5f6fa; /* near-white headings */
+  --subheading-text-1: #c5cad3; /* softer subheadings */
+  --subheading-text-2: #9ca3af; /* even softer secondary text */
+  --body-text-1: #d1d5db; /* standard readable text */
 
-  --nav-item-text-color: "#2b303b";
-  --nav-item-text-active-color: "#0e121b";
-  --nav-item-icon-color: "#2b303b";
-  --nav-item-icon-active-color: "#335cff";
-  --nav-item-bg-active: #f3f5f8;
+  --nav-item-text-color: #e4e7eb;
+  --nav-item-text-active-color: #ffffff;
+  --nav-item-icon-color: #aeb4c1;
+  --nav-item-icon-active-color: #6188ff;
+  --nav-item-bg-active: rgba(51, 92, 255, 0.15);
+
+  /* Collection & Notes cards */
+  --collection-card-bg: #181a1f;
+  --collection-card-border: #2a2d34;
+  --collection-card-hover-bg: #22252b;
+  --collection-card-text: #f5f6fa;
+  --collection-card-subtext: #b5bac5;
+
+  --notes-card-bg: #181a1f;
+  --notes-card-hover-bg: #22252b;
+  --notes-card-text: #f5f6fa;
+  --notes-card-subtext: #b5bac5;
 
   /* Primary Button */
   --btn-primary-bg: #335cff;
-  --btn-primary-hover-bg: #2547d0;
-  --btn-primary-active-bg: #335cff;
+  --btn-primary-hover-bg: #2649e6;
+  --btn-primary-active-bg: #1e3ed1;
   --btn-primary-text: #ffffff;
 
   /* Secondary Button */
-  --btn-secondary-bg: #2a2e36;
-  --btn-secondary-hover-bg: #232530;
-  --btn-secondary-active-bg: #2a2e36;
-  --btn-secondary-text: #ffffff;
+  --btn-secondary-bg: #2b2e36;
+  --btn-secondary-hover-bg: #353841;
+  --btn-secondary-active-bg: #2b2e36;
+  --btn-secondary-text: #e1e4ea;
   --btn-secondary-hover-text: #ffffff;
   --btn-secondary-active-text: #ffffff;
-  --btn-secondary-border: #2a2e36;
+  --btn-secondary-border: #3c4049;
 
   /* Outlined Button */
-  --btn-outlined-bg: #232530;
-  --btn-outlined-text: #ffffff;
-  --btn-outlined-hover-bg: #2a2e36;
+  --btn-outlined-bg: transparent;
+  --btn-outlined-text: #e5e7eb;
+  --btn-outlined-hover-bg: #2a2e37;
   --btn-outlined-hover-text: #ffffff;
-  --btn-outlined-active-bg: #232530;
+  --btn-outlined-active-bg: #2a2e37;
   --btn-outlined-active-text: #ffffff;
-  --btn-outlined-border: #5c6576;
+  --btn-outlined-border: #4b5160;
 
   /* Warning Button */
   --btn-warning-bg: #fb3748;
   --btn-warning-hover-bg: #e23240;
-  --btn-warning-active-bg: #fb3748;
+  --btn-warning-active-bg: #c72c38;
   --btn-warning-text: #ffffff;
 
-  /* border color for button when active */
-  --btn-secondary-active-border: #919191;
-  --btn-outlined-active-border: #ffffff;
+  /* Border & shadows */
+  --btn-active-border: #6b7280;
+  --btn-inner-shadow-color: #181a1f;
+  --btn-outer-shadow-color: #2e3139;
 
-  /* Color for disabled buttons */
-  --btn-disabled-bg: #2a2d38;
-  --btn-disabled-text: #99a0ae;
+  /* Disabled */
+  --btn-disabled-bg: #1d1f24;
+  --btn-disabled-text: #5f6570;
 
-  /* color for button shadow when active */
-  --btn-inner-shadow-color: #232530;
-  --btn-outer-shadow-color: #4b5160;
+  /* Text inputs */
+  --input-field-border: #3b3f46;
+  --input-field-label-color: #f5f6fa;
+  --input-field-subLabel-color: #c5cad3;
+  --input-field-info-text: #9ca3af;
+  --input-field-disabled-bg: #1b1d22;
+  --input-field-hover-bg: #22252b;
+  --input-item-icon-color: #aeb4c1;
 
-  /* color for logo bar for mobile and tablet screens */
-  --logo-bar-background: #f3f5f8;
+  /* Warning text */
+  --warning-color: #fb3748;
+
+  /* Divider */
+  --divider: #2a2d34;
+
+  /* Logo bar (mobile/tablet) */
+  --logo-bar-background: #181a1f;
+
+  /* Modal colors */
+  --modal-overlay: rgba(0, 0, 0, 0.6);
+  --modal-icon-bg: #22252b;
+  --modal-icon-color: #f5f6fa;
+
+  /* Theme options */
+  --option-bg: #181a1f;
+  --option-hover-bg: #22252b;
+  --option-icon-bg: #1e2026;
+  --option-border: #2a2d34;
+  --option-icon-border: #2a2d34;
+  --option-label-text: #f5f6fa;
+  --option-description: #b5bac5;
+
+  /* Toasts */
+  --toast-bg: #1e2026;
+  --toast-text: #f5f6fa;
 }

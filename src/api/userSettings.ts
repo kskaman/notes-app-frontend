@@ -40,7 +40,19 @@ export const getFontTheme = (): "sans-serif" | "serif" | "monospace" => {
   return "sans-serif"; // default value
 };
 
+export const changeColorTheme = (colorTheme: "light" | "dark") => {
+  const root = document.documentElement;
+
+  // toggle the .dark class
+  if (colorTheme === "dark") root.classList.add("dark");
+  else root.classList.remove("dark");
+
+  // optional: hint to browsers for form controls/scrollbars
+  root.style.colorScheme = colorTheme;
+};
+
 export const requestUpdateColorTheme = (colorTheme: "light" | "dark") => {
+  changeColorTheme(colorTheme);
   store.dispatch({
     type: "user/updateColorTheme",
     payload: colorTheme,
