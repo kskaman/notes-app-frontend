@@ -1,14 +1,6 @@
-interface SettingsIconProps {
-  color?: string;
-  width?: number;
-  height?: number;
-}
+import type { IconProps } from "../../../types";
 
-const SettingsIcon = ({
-  color,
-  width = 16,
-  height = 16,
-}: SettingsIconProps) => (
+const SettingsIcon = ({ color, width = 16, height = 16 }: IconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={width}

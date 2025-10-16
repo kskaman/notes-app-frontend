@@ -1,6 +1,11 @@
-import type { IconProps } from '../../types/icon';
+import type { IconProps } from "../../../types";
 
-const HomeIcon = ({ color, width = 16, height = 16, className = "" }: IconProps) => (
+const HomeIcon = ({
+  color,
+  width = 16,
+  height = 16,
+  className = "",
+}: IconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={width}

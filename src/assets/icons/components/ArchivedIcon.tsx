@@ -1,4 +1,4 @@
-import type { IconProps } from '../../types/icon';
+import type { IconProps } from "../../../types";
 
 const ArchivedIcon = ({
   color,

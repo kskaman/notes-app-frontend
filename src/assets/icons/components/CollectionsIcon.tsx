@@ -1,14 +1,6 @@
-interface CollectionsIconProps {
-  color?: string;
-  width?: number;
-  height?: number;
-}
+import type { IconProps } from "../../../types";
 
-const CollectionsIcon = ({
-  color,
-  width = 16,
-  height = 16,
-}: CollectionsIconProps) => (
+const CollectionsIcon = ({ color, width = 16, height = 16 }: IconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={width}

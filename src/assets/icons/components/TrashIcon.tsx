@@ -1,10 +1,6 @@
-interface TrashIconProps {
-  color?: string;
-  width?: number;
-  height?: number;
-}
+import type { IconProps } from "../../../types";
 
-const TrashIcon = ({ color, width = 24, height = 24 }: TrashIconProps) => (
+const TrashIcon = ({ color, width = 24, height = 24 }: IconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={width}
