@@ -9,7 +9,6 @@ export async function loginRequest(
   email: string,
   password: string
 ): Promise<LoginResult | null> {
-  console.log(users);
   const user = users.find((u) => u.email === email && u.password === password);
 
   if (!user) {

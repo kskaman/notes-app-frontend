@@ -13,7 +13,6 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
   const navigate = useNavigate();
 
   const login = ({ token }: { token: string }) => {
-    console.log("Login token:", token);
     localStorage.setItem("accessToken", token);
     setAccessToken(token);
     navigate("/", { replace: true });
