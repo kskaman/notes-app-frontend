@@ -29,7 +29,7 @@ const ThemeOption = ({
           border border-(--option-icon-border) rounded-[12px]
         w-10 h-10 bg-(--option-icon-bg)"
         >
-          <img src={icon} alt="theme option icon" className="w-5" />
+          {icon}
         </div>
         <div className={`flex flex-col ${familyClass}`}>
           <span className="text-preset-4 text-(--option-label-text)">
@@ -49,11 +49,14 @@ const ThemeOption = ({
         onChange={() => onChange(value)}
         className={`
     w-3 h-3 rounded-full
-    border-[3px]
-    ${checked ? "border-blue-600" : "border-gray-300"}
+    border-[2px]
+    ${
+      checked
+        ? "border-blue-600 bg-(--option-hover-bg)"
+        : "border-gray-300 bg-(--option-bg)"
+    }
     appearance-none
     transition duration-150
-    bg-white
   `}
       />
     </label>

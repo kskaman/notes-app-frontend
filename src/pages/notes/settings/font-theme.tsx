@@ -35,7 +35,13 @@ const FontThemePage = () => {
             id={option.id}
             title={option.title}
             description={option.description}
-            icon={option.icon}
+            icon={
+              <option.icon
+                color={`var(--option-icon)`}
+                height={20}
+                width={20}
+              />
+            }
             name="color-theme"
             value={option.value}
             checked={selectedTheme === option.value}

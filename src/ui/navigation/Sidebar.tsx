@@ -1,9 +1,7 @@
 import { NavLink } from "react-router";
-import { logo } from "../../assets";
+import { LeftArrowIcon, logo } from "../../assets";
 import { NAV_LINKS, SETTINGS_LINK } from "../../constants";
-import leftArrowIcon from "../../assets/icons/svg/icon-arrow-left.svg";
-import logoutIcon from "../../assets/icons/svg/icon-logout.svg";
-
+import LogoutIcon from "../../assets/icons/components/LogoutIcon";
 import { useAuth } from "../../context/AuthContext";
 import clsx from "clsx";
 import type { SidebarProps } from "../../types/layouts";
@@ -77,11 +75,9 @@ const Sidebar = ({ expanded, setExpanded }: SidebarProps) => {
                   {expanded && <span className="text-preset-4 ">{name}</span>}
                 </div>
                 {expanded && isActive && (
-                  <div>
-                    <img
-                      src={leftArrowIcon}
-                      alt="right arrow"
-                      className="w-4 rotate-180"
+                  <div className="w-4 rotate-180">
+                    <LeftArrowIcon
+                      color={`var(--nav-item-icon-active-color)`}
                     />
                   </div>
                 )}
@@ -116,12 +112,8 @@ const Sidebar = ({ expanded, setExpanded }: SidebarProps) => {
               </div>
 
               {expanded && isActive && (
-                <div>
-                  <img
-                    src={leftArrowIcon}
-                    alt="right arrow"
-                    className="w-4 rotate-180"
-                  />
+                <div className="w-4 rotate-180">
+                  <LeftArrowIcon color={`var(--nav-item-icon-active-color)`} />
                 </div>
               )}
             </>
@@ -131,11 +123,14 @@ const Sidebar = ({ expanded, setExpanded }: SidebarProps) => {
         <div
           className="flex items-center gap-2 
                py-[10px] px-3 cursor-pointer
-              rounded-[8px] w-full 
-              text-(--nav-item-text-color)"
+              rounded-[8px] w-full"
           onClick={logout}
         >
-          <img src={logoutIcon} alt="logout" className="w-6 rotate-180" />
+          <LogoutIcon
+            height={24}
+            width={24}
+            color={`var(--nav-item-text-color)`}
+          />
 
           {expanded && <span className="text-preset-4">Logout</span>}
         </div>

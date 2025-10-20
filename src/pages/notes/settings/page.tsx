@@ -2,7 +2,7 @@ import { NavLink } from "react-router";
 import clsx from "clsx";
 import { SETTINGS_ITEMS } from "../../../constants";
 import { StandardPageLayout } from "../../../ui";
-import leftArrowIcon from "../../../assets/icons/svg/icon-arrow-left.svg";
+import { LeftArrowIcon } from "../../../assets";
 
 const baseNavClasses = `
   flex items-center gap-2 justify-between py-[10px] px-3
@@ -29,12 +29,8 @@ const SettingsPage = () => {
           </div>
           <div className="hidden lg:flex lg:justify-center lg:items-center">
             {isActive && (
-              <div>
-                <img
-                  src={leftArrowIcon}
-                  alt="right arrow"
-                  className="w-4 rotate-180"
-                />
+              <div className="w-4 rotate-180">
+                <LeftArrowIcon color={`var(--nav-item-icon-color)`} />
               </div>
             )}
           </div>

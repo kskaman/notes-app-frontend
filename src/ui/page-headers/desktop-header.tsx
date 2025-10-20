@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 import { useBack } from "../../hooks/useBack";
-import leftArrowIcon from "../../assets/icons/svg/icon-arrow-left.svg";
 import { Button } from "../components";
+import { LeftArrowIcon } from "../../assets";
 
 const DesktopHeader = ({ heading }: { heading: string }) => {
   const { showBack, back_path } = useBack();
@@ -17,7 +17,7 @@ const DesktopHeader = ({ heading }: { heading: string }) => {
         <Button
           variant="icon"
           width="10px"
-          icon={<img src={leftArrowIcon} />}
+          icon={<LeftArrowIcon color={`var(--nav-item-icon-color)`} />}
           onClick={() => {
             if (back_path) {
               navigate(back_path);

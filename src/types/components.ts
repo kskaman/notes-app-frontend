@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import type { ButtonVariant } from "../constants";
+import type React from "react";
 
 // Base component props that many components share
 export interface BaseComponentProps {
@@ -104,7 +105,7 @@ export interface BaseCardProps extends BaseComponentProps, InteractiveProps {
 export interface ThemeOptionProps extends BaseComponentProps {
   title: string;
   description: string;
-  icon: string;
+  icon: ReactNode;
   value: string;
   name: string;
   checked: boolean;

@@ -1,9 +1,10 @@
 import { NavLink } from "react-router";
 
-import logoutIcon from "../../assets/icons/svg/icon-logout.svg";
 import { useAuth } from "../../context/AuthContext";
 import clsx from "clsx";
 import { NAV_LINKS, SETTINGS_LINK } from "../../constants";
+
+import { LogoutIcon } from "../../assets";
 
 const baseNavClasses = `
   flex items-center gap-2 justify-center py-1 px-3
@@ -87,11 +88,14 @@ const BottomNavbar = () => {
         <div
           className="flex flex-col items-center gap-2 
                cursor-pointer
-              rounded-[8px]
-              text-(--nav-item-text-color)"
+              rounded-[8px]"
           onClick={logout}
         >
-          <img src={logoutIcon} alt="logout" className="w-6 rotate-180" />
+          <LogoutIcon
+            height={24}
+            width={24}
+            color={`var(--nav-item-text-color)`}
+          />
 
           {<span className="text-preset-4 hidden sm:inline">Logout</span>}
         </div>

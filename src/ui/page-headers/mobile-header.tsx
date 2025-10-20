@@ -1,7 +1,7 @@
-import leftArrowIcon from "../../assets/icons/svg/icon-arrow-left.svg";
 import { useNavigate } from "react-router";
 import { useBack } from "../../hooks/useBack";
 import { Button } from "../components";
+import { LeftArrowIcon } from "../../assets";
 
 const MobileHeader = ({ heading }: { heading: string }) => {
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ const MobileHeader = ({ heading }: { heading: string }) => {
           <Button
             variant="icon"
             width="10px"
-            icon={<img src={leftArrowIcon} />}
+            icon={<LeftArrowIcon color={`var(--nav-item-icon-color)`} />}
             onClick={() => navigate(-1)}
           />
         )}

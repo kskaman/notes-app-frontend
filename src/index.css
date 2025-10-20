@@ -235,6 +235,7 @@ html[data-font-theme="monospace"] {
   --option-bg: #ffffff;
   --option-hover-bg: #f3f5f8;
   --option-icon-bg: #ffffff;
+  --option-icon: #0e121b;
   --option-border: #e0e4ea;
   --option-icon-border: #e0e4ea;
   --option-label-text: #0e121b;
@@ -243,7 +244,11 @@ html[data-font-theme="monospace"] {
   /* toast colors */
   --toast-bg: #ffffff;
   --toast-text: #0e121b;
+
+  /* logo icon */
+  --logo-icon: #0e121b;
 }
+
 .dark {
   /* Containers */
   --main-container-bg: #0e0f12; /* main background */
@@ -269,13 +274,13 @@ html[data-font-theme="monospace"] {
   --nav-item-bg-active: rgba(51, 92, 255, 0.15);
 
   /* Collection & Notes cards */
-  --collection-card-bg: #181a1f;
+  --collection-card-bg: #0e121b;
   --collection-card-border: #2a2d34;
   --collection-card-hover-bg: #22252b;
   --collection-card-text: #f5f6fa;
   --collection-card-subtext: #b5bac5;
 
-  --notes-card-bg: #181a1f;
+  --notes-card-bg: ##0e121b;
   --notes-card-hover-bg: #22252b;
   --notes-card-text: #f5f6fa;
   --notes-card-subtext: #b5bac5;
@@ -343,15 +348,19 @@ html[data-font-theme="monospace"] {
   --modal-icon-color: #f5f6fa;
 
   /* Theme options */
-  --option-bg: #181a1f;
-  --option-hover-bg: #22252b;
-  --option-icon-bg: #1e2026;
-  --option-border: #2a2d34;
-  --option-icon-border: #2a2d34;
-  --option-label-text: #f5f6fa;
-  --option-description: #b5bac5;
+  --option-bg: #0e121b;
+  --option-hover-bg: #2b303b;
+  --option-icon-bg: #0e121b;
+  --option-icon: #ffffff;
+  --option-border: #3b3f46;
+  --option-icon-border: #2b303b;
+  --option-label-text: #ffffff;
+  --option-description: #cacfd8;
 
   /* Toasts */
   --toast-bg: #1e2026;
   --toast-text: #f5f6fa;
+
+  /* logo icon */
+  --logo-icon: #ffffff;
 }

@@ -1,19 +1,18 @@
-import lightThemeIcon from "../../assets/icons/svg/icon-sun.svg";
-import darkThemeIcon from "../../assets/icons/svg/icon-moon.svg";
+import { MoonIcon, SunIcon } from "../../assets";
 
 const colorThemeOptions = [
   {
     id: "light",
     title: "Light Mode",
     description: "Pick a clean and classic light theme",
-    icon: lightThemeIcon,
+    icon: SunIcon,
     value: "light",
   },
   {
     id: "dark",
     title: "Dark Mode",
     description: "Select a sleek and modern dark theme",
-    icon: darkThemeIcon,
+    icon: MoonIcon,
     value: "dark",
   },
 ];
