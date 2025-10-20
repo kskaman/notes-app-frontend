@@ -1,11 +1,11 @@
-import { ChangePasswordIcon, FontThemeIcon, SunIcon } from "../../assets";
+import { ChangePasswordIcon, FontThemeIcon } from "../../assets";
 
 export const SETTINGS_ITEMS = [
-  {
-    name: "Color Theme",
-    to: "/settings/color-theme",
-    icon: <SunIcon width={20} height={20} color={`var(--option-icon)`} />,
-  },
+  // {
+  //   name: "Color Theme",
+  //   to: "/settings/color-theme",
+  //   icon: <SunIcon width={20} height={20} color={`var(--option-icon)`} />,
+  // },
   {
     name: "Font Theme",
     to: "/settings/font-theme",

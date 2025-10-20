@@ -18,11 +18,11 @@ const userSlice = createSlice({
   name: "user",
   initialState: getInitialUserState(),
   reducers: {
-    updateColorTheme: (state, action) => {
-      if ("colorTheme" in state) {
-        state.colorTheme = action.payload;
-      }
-    },
+    // updateColorTheme: (state, action) => {
+    //   if ("colorTheme" in state) {
+    //     state.colorTheme = action.payload;
+    //   }
+    // },
     updateFontTheme: (state, action) => {
       if ("fontTheme" in state) {
         state.fontTheme = action.payload;
@@ -41,6 +41,5 @@ const userSlice = createSlice({
   },
 });
 
-export const { updateColorTheme, updateFontTheme, updatePassword } =
-  userSlice.actions;
+export const { updateFontTheme, updatePassword } = userSlice.actions;
 export default userSlice.reducer;

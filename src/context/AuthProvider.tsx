@@ -3,7 +3,6 @@ import { AuthContext } from "./AuthContext";
 import { useNavigate } from "react-router";
 import { resetCollections } from "../api/store/reducers/collectionsReducer";
 import { resetNotes } from "../api/store/reducers/notesReducer";
-import { changeColorTheme } from "../api/userSettings";
 
 interface AuthProviderProps {
   children: ReactNode;
@@ -25,7 +24,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     resetCollections();
     resetNotes();
     document.documentElement.removeAttribute("data-font-theme");
-    changeColorTheme("light");
+    // changeColorTheme("light");
 
     localStorage.removeItem("accessToken");
     navigate("/auth/login", { replace: true });
