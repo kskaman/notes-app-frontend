@@ -1,5 +1,5 @@
 import { Outlet } from "react-router";
-import { Logo } from "../../assets";
+import { logo as logoSrc } from "../../assets";
 
 const AuthPage = () => {
   return (
@@ -22,7 +22,7 @@ const AuthPage = () => {
         "
       >
         {/* logo on first line */}
-        <Logo width={100} height={28} color={`var(--logo-color)`} />
+        <img src={logoSrc} alt="Logo" className="w-32 md:w-40 h-auto" />
         <Outlet />
       </div>
     </div>

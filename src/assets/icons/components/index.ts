@@ -17,5 +17,3 @@ export { default as MoonIcon } from "./MoonIcon";
 
 export { default as ChangePasswordIcon } from "./ChangePasswordIcon";
 export { default as FontThemeIcon } from "./FontThemeIcon";
-
-export { default as Logo } from "./Logo";
