@@ -42,7 +42,7 @@ const FontThemePage = () => {
                 width={20}
               />
             }
-            name="color-theme"
+            name="font-theme"
             value={option.value}
             checked={selectedTheme === option.value}
             onChange={() =>

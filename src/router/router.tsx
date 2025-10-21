@@ -27,9 +27,9 @@ const ChangePasswordPage = lazy(
 );
 const NotePage = lazy(() => import("../pages/notes/note/page"));
 const FontThemePage = lazy(() => import("../pages/notes/settings/font-theme"));
-const ColorThemePage = lazy(
-  () => import("../pages/notes/settings/color-theme")
-);
+// const ColorThemePage = lazy(
+//   () => import("../pages/notes/settings/color-theme")
+// );
 
 export const router = createBrowserRouter([
   {
@@ -98,11 +98,11 @@ export const router = createBrowserRouter([
                 element: <FontThemePage />,
                 handle: { header: "Font Theme" },
               },
-              {
-                path: "color-theme",
-                element: <ColorThemePage />,
-                handle: { header: "Color Theme" },
-              },
+              // {
+              //   path: "color-theme",
+              //   element: <ColorThemePage />,
+              //   handle: { header: "Color Theme" },
+              // },
             ],
           },
         ],
