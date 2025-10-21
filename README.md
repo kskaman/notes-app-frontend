@@ -4,7 +4,7 @@ A modern, responsive notes management application built with React, TypeScript, 
 
 ## Live Demo
 
-[click here](notes-app-frontend-rosy.vercel.app)
+[click here](https://notes-app-frontend-rosy.vercel.app)
 
 ## Features
 
