@@ -12,7 +12,6 @@ A modern, responsive notes management application built with React, TypeScript, 
 - **Collections Management** - Organize notes into custom collections
 - **Search & Filter** - Find notes quickly with advanced search
 - **Archive System** - Archive notes and collections for later reference
-- **Theme Customization** - Light/dark mode and font family options
 - **Authentication** - Secure login system with test accounts
 - **Responsive Design** - Works seamlessly on desktop, tablet, and mobile
 - **Performance Optimized** - Code splitting, lazy loading, and memoization
